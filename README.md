@@ -1,0 +1,2 @@
+# sk8-shop
+ My personal implementation of the Udacity Android Kotlin Developer: Shoe Store project demonstrating Layout building and in-app Navigation through Fragments and Views––as well as configuration-safe state preservation with the help of ViewModels.
