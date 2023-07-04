@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">sk8-shop</string>
+    <string name="login_screen">LOGIN SCREEN</string>
 </resources>
