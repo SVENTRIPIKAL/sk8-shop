@@ -2,10 +2,26 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/LoginFragmentBackgroundStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    style="@style/LoginFragment_Style">
+
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/FragmentTextView_TextAppearance_LARGE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/user_login"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/outlinedLayout_Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedLayout_Email"
@@ -23,7 +39,7 @@
         app:boxStrokeWidth="2dp"
         app:boxStrokeWidthFocused="3dp"
 
-        app:hintTextAppearance="@style/InputEditTextAppearance"
+        app:hintTextAppearance="@style/InputEditText_TextAppearance"
         app:hintTextColor="@color/lightGreen"
         app:layout_constraintBottom_toTopOf="@id/outlinedLayout_Password"
 
@@ -34,12 +50,12 @@
         app:startIconDrawable="@drawable/filled_email_24"
         app:startIconTint="@color/lightGreen">
 
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textField_Email"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/InputEditTextAppearance" />
+            android:singleLine="true"
+            android:textAppearance="@style/InputEditText_TextAppearance" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -50,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
 
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="80dp"
         android:gravity="center"
         android:hint="@string/password"
         android:textColorHint="@color/black"
@@ -59,7 +75,7 @@
         app:boxStrokeWidth="2dp"
         app:boxStrokeWidthFocused="3dp"
 
-        app:hintTextAppearance="@style/InputEditTextAppearance"
+        app:hintTextAppearance="@style/InputEditText_TextAppearance"
         app:hintTextColor="@color/lightGreen"
         app:layout_constraintBottom_toBottomOf="parent"
 
@@ -70,14 +86,13 @@
         app:startIconDrawable="@drawable/filled_lock_24"
         app:startIconTint="@color/lightGreen">
 
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textField_Password"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/InputEditTextAppearance" />
+            android:singleLine="true"
+            android:textAppearance="@style/InputEditText_TextAppearance" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

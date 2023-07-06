@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightYellow"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    style="@style/MainActivity_Style">
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
-        style="@style/ActionBarStyle"
+        style="@style/ActionBar_Style"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintBottom_toTopOf="@id/nav_host_fragment"
@@ -17,8 +18,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/app_name"
-        app:titleTextAppearance="@style/ActionBarTextAppearance"
+        app:titleTextAppearance="@style/ActionBar_TextAppearance"
         app:titleTextColor="@color/lightGreen" />
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
@@ -32,6 +34,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolBar"
         app:navGraph="@navigation/nav_graph" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
