@@ -24,12 +24,12 @@ class ApplicationViewModel: ViewModel() {
         get() = _userPassword
 
 
-    // assign userEmail value
+    // assign userEmail value lambda
     val updateUserEmail: (String) -> Unit = {
         _userEmail.value = it
     }
 
-    // assign userPassword value
+    // assign userPassword value lambda
     val updateUserPassword: (String) -> Unit = {
         _userPassword.value = it
     }

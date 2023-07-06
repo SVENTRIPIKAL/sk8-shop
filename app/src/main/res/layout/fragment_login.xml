@@ -91,7 +91,6 @@
             app:startIconDrawable="@drawable/filled_lock_24"
             app:startIconTint="@color/lightGreen"
             app:startIconContentDescription="@string/password_logo"
-            app:endIconMode="password_toggle"
 
             app:layout_constraintTop_toBottomOf="@+id/outlinedLayout_Email"
             app:layout_constraintBottom_toBottomOf="parent"

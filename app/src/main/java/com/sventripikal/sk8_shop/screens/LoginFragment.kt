@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.textfield.TextInputLayout
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
+import com.sventripikal.sk8_shop.TRUE
 import com.sventripikal.sk8_shop.databinding.FragmentLoginBinding
 import com.sventripikal.sk8_shop.timber
 
@@ -41,6 +43,7 @@ class LoginFragment : Fragment() {
         setObserverUI()
 
         timber(TAG, MESSAGE_CREATED, Priority.VERBOSE)
+
         // return root layout
         return binding.root
     }
@@ -53,17 +56,35 @@ class LoginFragment : Fragment() {
 
 
     private fun setObserverUI() {
+        // Fragment bindings block
+        binding.apply {
 
-        // observer for Email editText view
-        binding.outlinedLayoutEmail.editText?.doOnTextChanged { emailTextInput, _, _, _ ->
-            viewModel.updateUserEmail(emailTextInput.toString())
-            timber(TAG,"EMAIL: ${viewModel.userEmail.value}", Priority.DEBUG)
-        }
+            // observer for Email editText view
+            outlinedLayoutEmail.editText?.doOnTextChanged { emailTextInput, _, _, _ ->
+                if (emailTextInput?.isNotBlank() == TRUE) {
+                    viewModel!!.updateUserEmail(emailTextInput.toString())
+                    timber(TAG,"EMAIL: ${viewModel!!.userEmail.value}", Priority.DEBUG)
+                }
+            }
 
-        // observer for Password editText view
-        binding.outlinedLayoutPassword.editText?.doOnTextChanged { passwordTextInput, _, _, _ ->
-            viewModel.updateUserPassword(passwordTextInput.toString())
-            timber(TAG,"PASSWORD: ${viewModel.userPassword.value}", Priority.DEBUG)
+            // observer for Password editText view
+            outlinedLayoutPassword.editText?.doOnTextChanged { passwordTextInput, _, _, _ ->
+                // check if view contains text
+                when (passwordTextInput?.isNotBlank()) {
+                    TRUE -> { // update viewmodel passwordtext
+                        viewModel!!.updateUserPassword(passwordTextInput.toString())
+
+                        // make end icon visible
+                        outlinedLayoutPassword.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
+
+                        // log
+                        timber(TAG,"PASSWORD: ${viewModel!!.userPassword.value}", Priority.DEBUG)
+                    }
+                    else -> { // remove end icon visibility
+                        outlinedLayoutPassword.endIconMode = TextInputLayout.END_ICON_NONE
+                    }
+                }
+            }
         }
     }
 
