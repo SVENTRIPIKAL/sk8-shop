@@ -4,17 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.textfield.TextInputLayout.END_ICON_NONE
-import com.google.android.material.textfield.TextInputLayout.END_ICON_PASSWORD_TOGGLE
-import com.google.android.material.textfield.TextInputLayout.EndIconMode
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
-import com.sventripikal.sk8_shop.TRUE
 import com.sventripikal.sk8_shop.databinding.FragmentLoginBinding
 import com.sventripikal.sk8_shop.timber
-import timber.log.Timber
 
 
 private const val MESSAGE_CREATED = "LOGIN-FRAG CREATED"
@@ -26,7 +22,7 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
 
     // viewModel
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: ApplicationViewModel
 
 
     override fun onCreateView(
@@ -35,15 +31,42 @@ class LoginFragment : Fragment() {
         // inflate views
         binding = FragmentLoginBinding.inflate(inflater)
 
-        // reference viewModel
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        // reference ApplicationViewModel
+        viewModel = ViewModelProvider(this)[ApplicationViewModel::class.java]
 
+        // create lifecyle bindings
+        setLifeCycleBindings()
 
+        // set UI observers
+        setObserverUI()
 
         timber(TAG, MESSAGE_CREATED, Priority.VERBOSE)
         // return root layout
         return binding.root
     }
+
+
+    private fun setLifeCycleBindings() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+    }
+
+
+    private fun setObserverUI() {
+
+        // observer for Email editText view
+        binding.outlinedLayoutEmail.editText?.doOnTextChanged { emailTextInput, _, _, _ ->
+            viewModel.updateUserEmail(emailTextInput.toString())
+            timber(TAG,"EMAIL: ${viewModel.userEmail.value}", Priority.DEBUG)
+        }
+
+        // observer for Password editText view
+        binding.outlinedLayoutPassword.editText?.doOnTextChanged { passwordTextInput, _, _, _ ->
+            viewModel.updateUserPassword(passwordTextInput.toString())
+            timber(TAG,"PASSWORD: ${viewModel.userPassword.value}", Priority.DEBUG)
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

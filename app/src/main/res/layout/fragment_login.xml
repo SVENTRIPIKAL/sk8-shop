@@ -1,105 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    style="@style/LoginFragment_Style">
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sventripikal.sk8_shop.screens.ApplicationViewModel" />
+    </data>
 
 
-    <TextView
-        android:id="@+id/textView"
-        style="@style/FragmentTextView_TextAppearance_LARGE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="50dp"
-        android:text="@string/user_login"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/outlinedLayout_Email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        style="@style/LoginFragment_Style">
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedLayout_Email"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-
-        android:layout_marginBottom="2dp"
-        android:gravity="center"
-        android:hint="@string/email"
-        android:textColorHint="@color/black"
-
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeWidthFocused="3dp"
-
-        app:hintTextAppearance="@style/InputEditText_TextAppearance"
-        app:hintTextColor="@color/lightGreen"
-
-        app:startIconDrawable="@drawable/filled_email_24"
-        app:startIconTint="@color/lightGreen"
-        app:startIconContentDescription="@string/email_logo"
-        app:endIconMode="clear_text"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/outlinedLayout_Password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textField_Email"
-            android:layout_width="250dp"
+        <TextView
+            android:id="@+id/textView"
+            style="@style/FragmentTextView_TextAppearance_LARGE"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textAppearance="@style/InputEditText_TextAppearance" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/user_login"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toTopOf="@+id/outlinedLayout_Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedLayout_Password"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="80dp"
-        android:gravity="center"
-
-        android:hint="@string/password"
-        android:textColorHint="@color/black"
-
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeWidthFocused="3dp"
-
-        app:hintTextAppearance="@style/InputEditText_TextAppearance"
-        app:hintTextColor="@color/lightGreen"
-
-        app:startIconDrawable="@drawable/filled_lock_24"
-        app:startIconTint="@color/lightGreen"
-        app:startIconContentDescription="@string/password_logo"
-        app:endIconMode="password_toggle"
-
-        app:layout_constraintTop_toBottomOf="@+id/outlinedLayout_Email"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textField_Password"
-            android:layout_width="250dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedLayout_Email"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:inputType="textPassword"
-            android:textAppearance="@style/InputEditText_TextAppearance" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="100dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginBottom="2dp"
+            android:gravity="center"
+            android:hint="@string/email"
+            android:textColorHint="@color/black"
+
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="2dp"
+            app:boxStrokeWidthFocused="3dp"
+
+            app:hintTextAppearance="@style/InputEditText_TextAppearance"
+            app:hintTextColor="@color/lightGreen"
+
+            app:startIconDrawable="@drawable/filled_email_24"
+            app:startIconTint="@color/lightGreen"
+            app:startIconContentDescription="@string/email_logo"
+            app:endIconMode="clear_text"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/outlinedLayout_Password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textField_Email"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textAppearance="@style/InputEditText_TextAppearance" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedLayout_Password"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="80dp"
+            android:gravity="center"
+
+            android:hint="@string/password"
+            android:textColorHint="@color/black"
+
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="2dp"
+            app:boxStrokeWidthFocused="3dp"
+
+            app:hintTextAppearance="@style/InputEditText_TextAppearance"
+            app:hintTextColor="@color/lightGreen"
+
+            app:startIconDrawable="@drawable/filled_lock_24"
+            app:startIconTint="@color/lightGreen"
+            app:startIconContentDescription="@string/password_logo"
+            app:endIconMode="password_toggle"
+
+            app:layout_constraintTop_toBottomOf="@+id/outlinedLayout_Email"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textField_Password"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:textAppearance="@style/InputEditText_TextAppearance" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
 
 <!--
 app:helperText="*Enter a valid email*"
