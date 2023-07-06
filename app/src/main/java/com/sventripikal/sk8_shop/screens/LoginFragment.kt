@@ -5,15 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.sventripikal.sk8_shop.R
+import com.sventripikal.sk8_shop.databinding.FragmentLoginBinding
 
 
 class LoginFragment : Fragment() {
 
+    // viewBinder
+    private lateinit var binding: FragmentLoginBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    ): View {
+        // inflate views
+        binding = FragmentLoginBinding.inflate(inflater)
+
+        // return root layout
+        return binding.root
     }
 }

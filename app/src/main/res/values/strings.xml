@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">sk8-shop</string>
     <string name="login_screen">LOGIN SCREEN</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="email_logo">Email Logo</string>
+    <string name="password_logo">Password Logo</string>
 </resources>

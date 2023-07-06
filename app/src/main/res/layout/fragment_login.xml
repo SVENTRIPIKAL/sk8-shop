@@ -1,15 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LoginFragmentBackgroundStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.LoginFragment">
+    android:layout_margin="50dp"
+    tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedLayout_Email"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_horizontal"
-        android:text="@string/login_screen" />
+        android:layout_marginTop="100dp"
 
-</FrameLayout>
+        android:layout_marginBottom="2dp"
+        android:gravity="center"
+        android:hint="@string/email"
+        android:textColorHint="@color/black"
+
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="3dp"
+
+        app:hintTextAppearance="@style/InputEditTextAppearance"
+        app:hintTextColor="@color/lightGreen"
+        app:layout_constraintBottom_toTopOf="@id/outlinedLayout_Password"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconContentDescription="@string/email_logo"
+        app:startIconDrawable="@drawable/filled_email_24"
+        app:startIconTint="@color/lightGreen">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textField_Email"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/InputEditTextAppearance" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedLayout_Password"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:hint="@string/password"
+        android:textColorHint="@color/black"
+
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="3dp"
+
+        app:hintTextAppearance="@style/InputEditTextAppearance"
+        app:hintTextColor="@color/lightGreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedLayout_Email"
+        app:startIconContentDescription="@string/password_logo"
+        app:startIconDrawable="@drawable/filled_lock_24"
+        app:startIconTint="@color/lightGreen">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textField_Password"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/InputEditTextAppearance" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--
+app:helperText="*Enter a valid email*"
+app:helperTextTextColor="@color/darkRed"
+
+app:helperText="*Enter a valid password*"
+app:helperTextTextColor="@color/darkRed"
+-->
+    <!--
+    5. Create a new Login destination. [-]
+
+       * Include email and password labels [X]
+
+       - Include email and password fields [X]
+       - Create buttons for creating a new login and logging in with an existing account
+       - Clicking either button should navigate to the Welcome Screen.
+    -->

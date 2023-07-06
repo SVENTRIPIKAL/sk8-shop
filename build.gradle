@@ -2,6 +2,7 @@
 buildscript {
     repositories {
         google()
+        mavenCentral()  // Timber log
     }
     dependencies {
         // safeArgs

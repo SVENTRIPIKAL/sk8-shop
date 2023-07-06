@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ActionBarStyle">
+        <item name="android:background">@color/lightOrange</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+
+    <style name="ActionBarTextAppearance">
+        <item name="fontFamily">@font/skaterdude_font</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/lightGreen</item>
+    </style>
+
+    <style name="MainBackgroundStyle">
+        <item name="android:background">@color/lightYellow</item>
+    </style>
+
+    <style name="LoginFragmentBackgroundStyle">
+        <item name="android:background">@color/darkBlue</item>
+    </style>
+
+    <style name="InputEditTextAppearance">
+        <item name="fontFamily">@font/charmelade_font</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/lightGreen</item>
+    </style>
+
+</resources>

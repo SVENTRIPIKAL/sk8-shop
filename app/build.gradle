@@ -18,7 +18,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // bindings
     buildFeatures {
+        viewBinding true
         dataBinding true
     }
 
@@ -43,6 +45,14 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+    // material design
+    def md_version = "1.9.0"
+    implementation "com.google.android.material:material:$md_version"
+
+    // Timber log
+    def timber_version = "5.0.1"
+    implementation "com.jakewharton.timber:timber:$timber_version"
 
 
     implementation 'androidx.core:core-ktx:1.10.1'
