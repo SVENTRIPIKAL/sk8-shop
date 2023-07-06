@@ -10,6 +10,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.sventripikal.sk8_shop.databinding.ActivityMainBinding
 
+private const val MESSAGE_CREATED = "MAIN-ACTIVITY CREATED"
+private const val MESSAGE_DESTROYED = "MAIN-ACTIVITY DESTROYED"
+
 class MainActivity : AppCompatActivity() {
 
     // viewBinder
@@ -36,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         // setup action bar with navController & config
         setupActionBarWithNavController(navHostFragmentController, appBarConfiguration)
 
+        timber(TAG, MESSAGE_CREATED, Priority.VERBOSE)
+
         // set view to root layout
         setContentView(binding.root)
     }
@@ -46,6 +51,11 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(binding.navHostFragment.id)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timber(TAG, MESSAGE_DESTROYED, Priority.ERROR)
     }
 }
 
