@@ -31,6 +31,9 @@ class WelcomeFragment : Fragment() {
         // inflate WelcomeFragment views
         binding = FragmentWelcomeBinding.inflate(inflater)
 
+
+
+
         // log
         timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 

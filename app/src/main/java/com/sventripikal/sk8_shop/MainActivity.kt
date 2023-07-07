@@ -3,6 +3,7 @@ package com.sventripikal.sk8_shop
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -26,6 +27,9 @@ class MainActivity : AppCompatActivity() {
     // action bar config
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    // navController
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,19 +40,35 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolBar)
 
         // get navController from FragmentContainerView
-        val navHostFragmentController = NavHostFragment.findNavController(binding.navHostFragment.getFragment())
+        navController = NavHostFragment.findNavController(binding.navHostFragment.getFragment())
 
         // provide navGraph to appBarConfig
-        appBarConfiguration = AppBarConfiguration(navHostFragmentController.graph)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
 
         // setup action bar with navController & config
-        setupActionBarWithNavController(navHostFragmentController, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // setup navController destination listener
+        setupActionBarDestinationListener()
 
         // log
         timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 
         // set view to root layout
         setContentView(binding.root)
+    }
+
+    // update action bar icons by destination
+    private fun setupActionBarDestinationListener() {
+
+        // add destination listeners
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+
+            when (destination.id) {
+                // WELCOME:          hide back arrow | add overflow menu | add drawer
+                R.id.welcomeFragment -> binding.toolBar.navigationIcon = null
+            }
+        }
     }
 
 

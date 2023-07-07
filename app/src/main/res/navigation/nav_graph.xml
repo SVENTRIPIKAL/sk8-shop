@@ -24,6 +24,7 @@
         android:id="@+id/welcomeFragment"
         android:name="com.sventripikal.sk8_shop.screens.WelcomeFragment"
         android:label="@string/on_boarding"
-        tools:layout="@layout/fragment_welcome" />
+        tools:layout="@layout/fragment_welcome">
+    </fragment>
 
 </navigation>
