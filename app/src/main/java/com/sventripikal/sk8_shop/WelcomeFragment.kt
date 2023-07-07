@@ -9,6 +9,7 @@ import com.sventripikal.sk8_shop.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
 
+    // viewBinder
     private lateinit var binding: FragmentWelcomeBinding
 
     override fun onCreateView(
@@ -16,6 +17,8 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        return FragmentWelcomeBinding.inflate(inflater).root
+        binding = FragmentWelcomeBinding.inflate(inflater)
+
+        return binding.root
     }
 }

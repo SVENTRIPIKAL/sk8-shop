@@ -1,21 +1,14 @@
 package com.sventripikal.sk8_shop.screens
 
-import android.annotation.SuppressLint
-import android.content.res.Resources
-import android.graphics.Color
-import android.graphics.ColorSpace.Rgb
 import android.os.Bundle
-import android.provider.CalendarContract.Colors
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputLayout
 import com.sventripikal.sk8_shop.Priority
-import com.sventripikal.sk8_shop.R
 import com.sventripikal.sk8_shop.TAG
 import com.sventripikal.sk8_shop.TRUE
 import com.sventripikal.sk8_shop.databinding.FragmentLoginBinding
@@ -62,7 +55,6 @@ class LoginFragment : Fragment() {
     }
 
 
-    @SuppressLint("ResourceAsColor")
     private fun setObserverUI() {
         // Fragment bindings block
         binding.apply {

@@ -20,7 +20,6 @@ android {
 
     // bindings
     buildFeatures {
-        viewBinding true
         dataBinding true
     }
 
