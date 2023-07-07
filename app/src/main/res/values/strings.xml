@@ -5,4 +5,7 @@
     <string name="password">Password</string>
     <string name="email_logo">Email Logo</string>
     <string name="password_logo">Password Logo</string>
+    <string name="login_button_text">Login</string>
+    <string name="register_button_text">Register</string>
+    <string name="welcome_screen">WELCOME SCREEN</string>
 </resources>

@@ -5,8 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity"
-style="@style/MainActivity_Style">
-
+style="@style/MainActivity_Style" >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
@@ -25,10 +24,10 @@ style="@style/MainActivity_Style">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/width_0dp"
+        android:layout_height="@dimen/width_0dp"
         app:defaultNavHost="true"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/margin_20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
