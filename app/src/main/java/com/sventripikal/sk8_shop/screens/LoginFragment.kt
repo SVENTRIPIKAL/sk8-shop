@@ -32,7 +32,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        // inflate views
+        // inflate LoginFragment views
         binding = FragmentLoginBinding.inflate(inflater)
 
         // reference ApplicationViewModel
@@ -44,6 +44,7 @@ class LoginFragment : Fragment() {
         // set UI observers
         setObserverUI()
 
+        // log
         timber(TAG, MESSAGE_CREATED, Priority.VERBOSE)
 
         // return root layout
@@ -51,6 +52,7 @@ class LoginFragment : Fragment() {
     }
 
 
+    // bind viewmodel to this fragment
     private fun setLifeCycleBindings() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -133,7 +135,7 @@ class LoginFragment : Fragment() {
 
 
     /**
-     * helper text functions
+     * helper text functions to add / remove
      */
     //#1
     private fun setEmailHelperText() {

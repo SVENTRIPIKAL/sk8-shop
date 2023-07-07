@@ -33,6 +33,8 @@
 
     <style name="InputEditText_TextAppearance" parent="FragmentTextView_TextAppearance_LARGE">
     </style>
+    <style name="HelperEditText_TextAppearance" parent="FragmentTextView_TextAppearance_SMALL">
+    </style>
 
     <style name="RegisterButton_Style" parent="@style/Widget.Material3.Button.TonalButton">
         <item name="fontFamily">@font/charmelade_font</item>

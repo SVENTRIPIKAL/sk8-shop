@@ -8,6 +8,7 @@ import com.sventripikal.sk8_shop.TAG
 import com.sventripikal.sk8_shop.TRUE
 import com.sventripikal.sk8_shop.timber
 
+
 private const val MESSAGE_CREATED = "VIEW-MODEL CREATED"
 private const val MESSAGE_DESTROYED = "VIEW-MODEL DESTROYED"
 
@@ -24,19 +25,20 @@ class ApplicationViewModel: ViewModel() {
         get() = _userPassword
 
 
-    // assign userEmail value lambda
+    // assign userEmail value - lambda
     val updateUserEmail: (String) -> Unit = {
         _userEmail.value = it
     }
 
-    // assign userPassword value lambda
+    // assign userPassword value - lambda
     val updateUserPassword: (String) -> Unit = {
         _userPassword.value = it
     }
 
-    // check if email & password filled
+    // check if email & password not null or blank
     fun editFieldsComplete(): Boolean {
-        return userEmail.value?.isNotBlank() == TRUE && userPassword.value?.isNotBlank() == TRUE
+        return userEmail.value.isNullOrBlank() != TRUE &&
+                userPassword.value.isNullOrBlank() != TRUE
     }
 
 
