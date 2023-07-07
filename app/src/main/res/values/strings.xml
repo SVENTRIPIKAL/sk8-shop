@@ -8,4 +8,5 @@
     <string name="login_button_text">Login</string>
     <string name="register_button_text">Register</string>
     <string name="welcome_screen">WELCOME SCREEN</string>
+    <string name="on_boarding">On-boarding</string>
 </resources>

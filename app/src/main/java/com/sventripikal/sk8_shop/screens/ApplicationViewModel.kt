@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
+import com.sventripikal.sk8_shop.TRUE
 import com.sventripikal.sk8_shop.timber
-
 
 private const val MESSAGE_CREATED = "VIEW-MODEL CREATED"
 private const val MESSAGE_DESTROYED = "VIEW-MODEL DESTROYED"
@@ -34,8 +34,14 @@ class ApplicationViewModel: ViewModel() {
         _userPassword.value = it
     }
 
+    // check if email & password filled
+    fun editFieldsComplete(): Boolean {
+        return userEmail.value?.isNotBlank() == TRUE && userPassword.value?.isNotBlank() == TRUE
+    }
+
 
     init {
+        // log
         timber(TAG, MESSAGE_CREATED, Priority.VERBOSE)
     }
 

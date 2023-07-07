@@ -1,4 +1,4 @@
-package com.sventripikal.sk8_shop
+package com.sventripikal.sk8_shop.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,9 +16,10 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+        // inflate views
         binding = FragmentWelcomeBinding.inflate(inflater)
 
+        // return root layout
         return binding.root
     }
 }

@@ -13,12 +13,17 @@
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/welcomeFragment" />
+            app:enterAnim="@anim/slide_from_left_to_middle"
+            app:exitAnim="@anim/slide_from_middle_to_left"
+            app:popEnterAnim="@anim/slide_from_left_to_middle"
+            app:popExitAnim="@anim/slide_from_middle_to_left"
+            app:popUpToInclusive="false" />
     </fragment>
+
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.sventripikal.sk8_shop.WelcomeFragment"
-        android:label="fragment_welcome"
+        android:name="com.sventripikal.sk8_shop.screens.WelcomeFragment"
+        android:label="@string/on_boarding"
         tools:layout="@layout/fragment_welcome" />
 
 </navigation>

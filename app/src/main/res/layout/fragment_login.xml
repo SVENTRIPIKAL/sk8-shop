@@ -48,6 +48,9 @@
             app:boxStrokeWidth="@dimen/width_2dp"
             app:boxStrokeWidthFocused="@dimen/width_3dp"
 
+
+            app:helperTextTextColor="@color/darkRed"
+
             app:endIconMode="clear_text"
             app:hintTextAppearance="@style/InputEditText_TextAppearance"
             app:hintTextColor="@color/lightGreen"
@@ -88,6 +91,7 @@
             app:hintTextAppearance="@style/InputEditText_TextAppearance"
 
             app:hintTextColor="@color/lightGreen"
+            app:helperTextTextColor="@color/darkRed"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

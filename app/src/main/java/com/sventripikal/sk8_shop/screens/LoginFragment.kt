@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
@@ -15,6 +16,7 @@ import com.sventripikal.sk8_shop.databinding.FragmentLoginBinding
 import com.sventripikal.sk8_shop.timber
 
 
+private const val HELPER_TEXT = "*COMPLETE TEXT FIELD*"
 private const val MESSAGE_CREATED = "LOGIN-FRAG CREATED"
 private const val MESSAGE_DESTROYED = "LOGIN-FRAG DESTROYED"
 
@@ -61,30 +63,102 @@ class LoginFragment : Fragment() {
 
             // observer for Email editText view
             outlinedLayoutEmail.editText?.doOnTextChanged { emailTextInput, _, _, _ ->
-                if (emailTextInput?.isNotBlank() == TRUE) {
-                    viewModel!!.updateUserEmail(emailTextInput.toString())
-                    timber(TAG,"EMAIL: ${viewModel!!.userEmail.value}", Priority.DEBUG)
+
+                // update viewmodel emailText
+                viewModel!!.updateUserEmail(emailTextInput.toString())
+
+                // update helper text if input not null or blank
+                if (emailTextInput.isNullOrBlank() != TRUE) {
+                    removeEmailHelperText()
                 }
+
+                // log
+                timber(TAG, "EMAIL: ${viewModel!!.userEmail.value}", Priority.DEBUG)
             }
 
             // observer for Password editText view
             outlinedLayoutPassword.editText?.doOnTextChanged { passwordTextInput, _, _, _ ->
-                // check if view contains text
-                when (passwordTextInput?.isNotBlank()) {
-                    TRUE -> { // update viewmodel passwordtext
-                        viewModel!!.updateUserPassword(passwordTextInput.toString())
+                // update viewmodel passwordText
+                viewModel!!.updateUserPassword(passwordTextInput.toString())
 
-                        // make end icon visible
-                        outlinedLayoutPassword.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
+                // check if input not null or blank
+                if (passwordTextInput.isNullOrBlank() != TRUE) {
+                    // make end icon visible
+                    outlinedLayoutPassword.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
+                    // remove helper text
+                    removePasswordHelperText()
+                } else {// remove end icon visibility
+                    outlinedLayoutPassword.endIconMode = TextInputLayout.END_ICON_NONE
+                }
 
+                // log
+                timber(TAG, "PASSWORD: ${viewModel!!.userPassword.value}", Priority.DEBUG)
+            }
+
+            // set button navigation listener
+            newAccountButton.setOnClickListener {
+                viewModel.apply {
+                    // check if email & password are filled
+                    if (this!!.editFieldsComplete()) {
+                        //navigate to next fragment
+                        val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
+                        binding.root.findNavController().navigate(action)
+                    } else {
+                        // set helper text if not complete
+                        setHelperText()
                         // log
-                        timber(TAG,"PASSWORD: ${viewModel!!.userPassword.value}", Priority.DEBUG)
-                    }
-                    else -> { // remove end icon visibility
-                        outlinedLayoutPassword.endIconMode = TextInputLayout.END_ICON_NONE
+                        timber(TAG, HELPER_TEXT, Priority.DEBUG)
                     }
                 }
             }
+
+            // set button navigation listener
+            existingAccountButton.setOnClickListener {
+                viewModel.apply {
+                    // check if email & password are filled
+                    if (this!!.editFieldsComplete()) {
+                        //navigate to next fragment
+                        val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
+                        binding.root.findNavController().navigate(action)
+                    } else {
+                        // set helper text if not complete
+                        setHelperText()
+                        // log
+                        timber(TAG, HELPER_TEXT, Priority.DEBUG)
+                    }
+                }
+            }
+        }
+    }
+
+
+    /**
+     * helper text functions
+     */
+    //#1
+    private fun setEmailHelperText() {
+        binding.outlinedLayoutEmail.helperText = HELPER_TEXT
+    }
+    //#2
+    private fun removeEmailHelperText() {
+        binding.outlinedLayoutEmail.helperText = null
+    }
+    //#3
+    private fun setPasswordHelperText() {
+        binding.outlinedLayoutPassword.helperText = HELPER_TEXT
+    }
+    //#4
+    private fun removePasswordHelperText() {
+        binding.outlinedLayoutPassword.helperText = null
+    }
+    //#5
+    private fun setHelperText() {
+        if (viewModel.userEmail.value.isNullOrBlank()) {
+            setEmailHelperText()
+        }
+
+        if (viewModel.userPassword.value.isNullOrBlank()) {
+            setPasswordHelperText()
         }
     }
 
