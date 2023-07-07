@@ -13,3 +13,16 @@
             android:text="@string/welcome_screen" />
     </FrameLayout>
 </layout>
+<!--
+6. Create a new Welcome screen destination that includes:   [_]
+
+   * A new layout
+   * At least 2 textviews
+   * A navigation button with actions to navigate to the instructions screen
+
+7. Create a new Instruction destination that includes:  [_]
+
+   * A new layout
+   * At least 2 textviews
+   * A navigation button with actions to navigate to the shoe list screen
+-->

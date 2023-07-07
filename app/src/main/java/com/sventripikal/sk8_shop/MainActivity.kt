@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         // setup action bar with navController & config
         setupActionBarWithNavController(navHostFragmentController, appBarConfiguration)
 
+
         // log
         timber(TAG, MESSAGE_CREATED, Priority.VERBOSE)
 

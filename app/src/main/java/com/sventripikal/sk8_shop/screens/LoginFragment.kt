@@ -16,9 +16,14 @@ import com.sventripikal.sk8_shop.databinding.FragmentLoginBinding
 import com.sventripikal.sk8_shop.timber
 
 
+private const val MESSAGE_CREATE = "[LoginFragment] ON-CREATE"
+private const val MESSAGE_START = "[LoginFragment] ON-START"
+private const val MESSAGE_RESUME = "[LoginFragment] ON-RESUME"
+private const val MESSAGE_PAUSE = "[LoginFragment] ON-PAUSE"
+private const val MESSAGE_STOP = "[LoginFragment] ON-STOP"
+private const val MESSAGE_DESTROY = "[LoginFragment] ON-DESTROY"
+
 private const val HELPER_TEXT = "*COMPLETE TEXT FIELD*"
-private const val MESSAGE_CREATED = "LOGIN-FRAG CREATED"
-private const val MESSAGE_DESTROYED = "LOGIN-FRAG DESTROYED"
 
 class LoginFragment : Fragment() {
 
@@ -45,7 +50,7 @@ class LoginFragment : Fragment() {
         setObserverUI()
 
         // log
-        timber(TAG, MESSAGE_CREATED, Priority.VERBOSE)
+        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 
         // return root layout
         return binding.root
@@ -57,7 +62,6 @@ class LoginFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }
-
 
     private fun setObserverUI() {
         // Fragment bindings block
@@ -109,7 +113,7 @@ class LoginFragment : Fragment() {
                         // set helper text if not complete
                         setHelperText()
                         // log
-                        timber(TAG, HELPER_TEXT, Priority.DEBUG)
+                        timber(TAG, HELPER_TEXT, Priority.ERROR)
                     }
                 }
             }
@@ -126,7 +130,7 @@ class LoginFragment : Fragment() {
                         // set helper text if not complete
                         setHelperText()
                         // log
-                        timber(TAG, HELPER_TEXT, Priority.DEBUG)
+                        timber(TAG, HELPER_TEXT, Priority.ERROR)
                     }
                 }
             }
@@ -165,8 +169,29 @@ class LoginFragment : Fragment() {
     }
 
 
+
+    override fun onStart() {
+        super.onStart()
+        timber(TAG, MESSAGE_START, Priority.INFO)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        timber(TAG, MESSAGE_RESUME, Priority.DEBUG)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timber(TAG, MESSAGE_PAUSE, Priority.INFO)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        timber(TAG, MESSAGE_STOP, Priority.VERBOSE)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        timber(TAG, MESSAGE_DESTROYED, Priority.ERROR)
+        timber(TAG, MESSAGE_DESTROY, Priority.ERROR)
     }
 }
