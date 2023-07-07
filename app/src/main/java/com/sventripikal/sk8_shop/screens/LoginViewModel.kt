@@ -9,10 +9,10 @@ import com.sventripikal.sk8_shop.TRUE
 import com.sventripikal.sk8_shop.timber
 
 
-private const val MESSAGE_CREATED = "VIEW-MODEL CREATED"
-private const val MESSAGE_DESTROYED = "VIEW-MODEL DESTROYED"
+private const val MESSAGE_INIT = "[ViewModel] INIT"
+private const val MESSAGE_CLEARED = "[ViewModel] ON-CLEARED"
 
-class ApplicationViewModel: ViewModel() {
+class LoginViewModel: ViewModel() {
 
     // user login email
     private val _userEmail = MutableLiveData<String>()
@@ -23,7 +23,6 @@ class ApplicationViewModel: ViewModel() {
     private val _userPassword = MutableLiveData<String>()
     val userPassword: LiveData<String>
         get() = _userPassword
-
 
     // assign userEmail value - lambda
     val updateUserEmail: (String) -> Unit = {
@@ -42,14 +41,14 @@ class ApplicationViewModel: ViewModel() {
     }
 
 
-    init {
-        // log
-        timber(TAG, MESSAGE_CREATED, Priority.VERBOSE)
+    init {  // log
+        timber(TAG, MESSAGE_INIT, Priority.VERBOSE)
     }
 
 
+    // Lifecycle method
     override fun onCleared() {
         super.onCleared()
-        timber(TAG, MESSAGE_DESTROYED, Priority.ERROR)
+        timber(TAG, MESSAGE_CLEARED, Priority.ERROR)
     }
 }

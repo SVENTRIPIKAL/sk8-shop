@@ -31,17 +31,18 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
 
     // viewModel
-    private lateinit var viewModel: ApplicationViewModel
+    private lateinit var viewModel: LoginViewModel
 
-
+    // onCreate
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+
         // inflate LoginFragment views
         binding = FragmentLoginBinding.inflate(inflater)
 
         // reference ApplicationViewModel
-        viewModel = ViewModelProvider(this)[ApplicationViewModel::class.java]
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         // create lifecyle bindings
         setLifeCycleBindings()
@@ -56,14 +57,15 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-
     // bind viewmodel to this fragment
     private fun setLifeCycleBindings() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }
 
+    // set UI observers fuction
     private fun setObserverUI() {
+
         // Fragment bindings block
         binding.apply {
 
@@ -84,16 +86,20 @@ class LoginFragment : Fragment() {
 
             // observer for Password editText view
             outlinedLayoutPassword.editText?.doOnTextChanged { passwordTextInput, _, _, _ ->
+
                 // update viewmodel passwordText
                 viewModel!!.updateUserPassword(passwordTextInput.toString())
 
                 // check if input not null or blank
                 if (passwordTextInput.isNullOrBlank() != TRUE) {
+
                     // make end icon visible
                     outlinedLayoutPassword.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
+
                     // remove helper text
                     removePasswordHelperText()
-                } else {// remove end icon visibility
+
+                } else {    // remove end icon visibility
                     outlinedLayoutPassword.endIconMode = TextInputLayout.END_ICON_NONE
                 }
 
@@ -101,40 +107,47 @@ class LoginFragment : Fragment() {
                 timber(TAG, "PASSWORD: ${viewModel!!.userPassword.value}", Priority.DEBUG)
             }
 
-            // set button navigation listener
+            // set navigation logic for newAccount button listener
             newAccountButton.setOnClickListener {
-                viewModel.apply {
-                    // check if email & password are filled
-                    if (this!!.editFieldsComplete()) {
-                        //navigate to next fragment
-                        val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
-                        binding.root.findNavController().navigate(action)
-                    } else {
-                        // set helper text if not complete
-                        setHelperText()
-                        // log
-                        timber(TAG, HELPER_TEXT, Priority.ERROR)
-                    }
-                }
+                buttonNavigationLogic()
             }
 
-            // set button navigation listener
+            // set navigation logic for existingAccount button listener
             existingAccountButton.setOnClickListener {
-                viewModel.apply {
-                    // check if email & password are filled
-                    if (this!!.editFieldsComplete()) {
-                        //navigate to next fragment
-                        val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
-                        binding.root.findNavController().navigate(action)
-                    } else {
-                        // set helper text if not complete
-                        setHelperText()
-                        // log
-                        timber(TAG, HELPER_TEXT, Priority.ERROR)
-                    }
-                }
+                buttonNavigationLogic()
             }
         }
+    }
+
+    // navigation logic for button listener
+    private fun buttonNavigationLogic() {
+
+        // viewmodel block
+        viewModel.apply {
+
+            // check if email & password are filled
+            if (this.editFieldsComplete()) {
+
+                // clearEditTextFields
+                clearEditTextFields()
+
+                //navigate to next fragment
+                val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
+                binding.root.findNavController().navigate(action)
+
+            } else {    // set helper text if not complete
+                setHelperText()
+
+                // log
+                timber(TAG, HELPER_TEXT, Priority.ERROR)
+            }
+        }
+    }
+
+    // clear editTextFields
+    private fun clearEditTextFields() {
+        binding.outlinedLayoutEmail.editText!!.text.clear()
+        binding.outlinedLayoutPassword.editText!!.text.clear()
     }
 
 
@@ -169,7 +182,9 @@ class LoginFragment : Fragment() {
     }
 
 
-
+    /**
+     * Lifecycle methods
+     */
     override fun onStart() {
         super.onStart()
         timber(TAG, MESSAGE_START, Priority.INFO)
@@ -178,6 +193,7 @@ class LoginFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         timber(TAG, MESSAGE_RESUME, Priority.DEBUG)
+
     }
 
     override fun onPause() {

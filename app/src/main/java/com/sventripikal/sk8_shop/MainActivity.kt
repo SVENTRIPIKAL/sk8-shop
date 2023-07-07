@@ -11,8 +11,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.sventripikal.sk8_shop.databinding.ActivityMainBinding
 
 
-private const val MESSAGE_CREATED = "MAIN-ACTIVITY CREATED"
-private const val MESSAGE_DESTROYED = "MAIN-ACTIVITY DESTROYED"
+private const val MESSAGE_CREATE = "[MainActivity] ON-CREATE"
+private const val MESSAGE_START = "[MainActivity] ON-START"
+private const val MESSAGE_RESUME = "[MainActivity] ON-RESUME"
+private const val MESSAGE_PAUSE = "[MainActivity] ON-PAUSE"
+private const val MESSAGE_STOP = "[MainActivity] ON-STOP"
+private const val MESSAGE_DESTROY = "[MainActivity] ON-DESTROY"
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,9 +44,8 @@ class MainActivity : AppCompatActivity() {
         // setup action bar with navController & config
         setupActionBarWithNavController(navHostFragmentController, appBarConfiguration)
 
-
         // log
-        timber(TAG, MESSAGE_CREATED, Priority.VERBOSE)
+        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 
         // set view to root layout
         setContentView(binding.root)
@@ -56,9 +59,33 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 
+
+    /**
+     * Lifecycle methods
+     */
+    override fun onStart() {
+        super.onStart()
+        timber(TAG, MESSAGE_START, Priority.INFO)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        timber(TAG, MESSAGE_RESUME, Priority.DEBUG)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timber(TAG, MESSAGE_PAUSE, Priority.INFO)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        timber(TAG, MESSAGE_STOP, Priority.VERBOSE)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        timber(TAG, MESSAGE_DESTROYED, Priority.ERROR)
+        timber(TAG, MESSAGE_DESTROY, Priority.ERROR)
     }
 }
 

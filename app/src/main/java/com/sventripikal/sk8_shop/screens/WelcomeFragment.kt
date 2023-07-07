@@ -23,6 +23,7 @@ class WelcomeFragment : Fragment() {
     // viewBinder
     private lateinit var binding: FragmentWelcomeBinding
 
+    // onCreate
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +39,9 @@ class WelcomeFragment : Fragment() {
     }
 
 
+    /**
+     * Lifecycle methods
+     */
     override fun onStart() {
         super.onStart()
         timber(TAG, MESSAGE_START, Priority.INFO)

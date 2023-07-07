@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sventripikal.sk8_shop.screens.ApplicationViewModel" />
+            type="com.sventripikal.sk8_shop.screens.LoginViewModel" />
     </data>
 
 
