@@ -40,18 +40,17 @@
 
             android:gravity="center"
             android:hint="@string/password"
-
             android:textColorHint="@color/black"
+
             app:boxBackgroundColor="@color/white"
             app:boxStrokeWidth="@dimen/width_2dp"
 
             app:boxStrokeWidthFocused="@dimen/width_3dp"
             app:helperTextTextAppearance="@style/HelperEditText_TextAppearance"
-
             app:helperTextTextColor="@color/darkRed"
+
             app:hintTextAppearance="@style/InputEditText_TextAppearance"
             app:hintTextColor="@color/lightGreen"
-
             app:layout_constraintBottom_toTopOf="@+id/existingAccountButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -76,25 +75,29 @@
             style="@style/LoginButton_Style"
             android:layout_width="@dimen/width_110dp"
             android:layout_height="@dimen/height_60dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/login_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/newAccountButton" />
+            app:layout_constraintStart_toEndOf="@+id/newAccountButton"
+            app:layout_constraintTop_toBottomOf="@+id/outlinedLayout_Password" />
 
         <Button
             android:id="@+id/newAccountButton"
             style="@style/RegisterButton_Style"
             android:layout_width="@dimen/width_110dp"
             android:layout_height="@dimen/height_60dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/register_button_text"
             app:layout_constraintBottom_toBottomOf="@+id/existingAccountButton"
             app:layout_constraintEnd_toStartOf="@+id/existingAccountButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/existingAccountButton" />
+            app:layout_constraintTop_toTopOf="@+id/existingAccountButton"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedLayout_Email"
@@ -102,19 +105,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:layout_marginTop="20dp"
+
             android:gravity="center"
+
 
             android:hint="@string/email"
             android:textColorHint="@color/black"
 
-
             app:boxBackgroundColor="@color/white"
             app:boxStrokeWidth="@dimen/width_2dp"
-
             app:boxStrokeWidthFocused="@dimen/width_3dp"
+
             app:endIconMode="clear_text"
             app:helperTextTextAppearance="@style/HelperEditText_TextAppearance"
-
             app:helperTextTextColor="@color/darkRed"
             app:hintTextAppearance="@style/InputEditText_TextAppearance"
             app:hintTextColor="@color/lightGreen"
