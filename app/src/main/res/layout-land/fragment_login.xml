@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sventripikal.sk8_shop.screens.LoginViewModel" />
+            type="com.sventripikal.sk8_shop.screens.ApplicationViewModel" />
     </data>
 
 
@@ -128,11 +128,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
             app:startIconContentDescription="@string/email_logo"
-            app:startIconDrawable="@drawable/filled_email_24"
+            app:startIconDrawable="@drawable/round_person_24"
             app:startIconTint="@color/lightGreen">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textField_Email"
+                android:id="@+id/textField_UserName"
                 android:layout_width="@dimen/width_250dp"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
@@ -142,7 +142,3 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-<!--
-TO DO:
-+ CREATE NEW LANDSCAPE FRAGMENT FOR LANDSCAPE VIEW
--->

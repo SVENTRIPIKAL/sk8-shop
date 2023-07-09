@@ -5,14 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
-import com.sventripikal.sk8_shop.TRUE
 import com.sventripikal.sk8_shop.timber
 
 
 private const val MESSAGE_INIT = "[ViewModel] INIT"
 private const val MESSAGE_CLEARED = "[ViewModel] ON-CLEARED"
 
-class LoginViewModel: ViewModel() {
+class ApplicationViewModel : ViewModel() {
 
     // user login userName
     private val _userName = MutableLiveData<String>()
@@ -24,6 +23,11 @@ class LoginViewModel: ViewModel() {
     val userPassword: LiveData<String>
         get() = _userPassword
 
+    // user Welcome greeting
+    private val _welcomeGreeting = MutableLiveData<String>()
+    val welcomeGreeting: LiveData<String>
+        get() = _welcomeGreeting
+
     // assign userName value - lambda
     val updateUserName: (String) -> Unit = {
         _userName.value = it
@@ -34,14 +38,9 @@ class LoginViewModel: ViewModel() {
         _userPassword.value = it
     }
 
-    // check if userName & password not null or blank
-    fun editFieldsComplete(): Boolean {
-        return userName.value.isNullOrBlank() != TRUE &&
-                userPassword.value.isNullOrBlank() != TRUE
-    }
-
-    fun greetUser(): String {
-        return "Hi $userName! Welcome to Sk8-Shop!"
+    // assign greeting value - lambda
+    val updateGreeting: (String) -> Unit = { user ->
+        _welcomeGreeting.value = "Hello ${user.replaceFirstChar{it.uppercase()}}, Welcome to SK8-Shop!"
     }
 
 

@@ -1,12 +1,13 @@
 package com.sventripikal.sk8_shop.screens
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.sventripikal.sk8_shop.Priority
@@ -30,8 +31,8 @@ class LoginFragment : Fragment() {
     // viewBinder
     private lateinit var binding: FragmentLoginBinding
 
-    // viewModel
-    private lateinit var viewModel: LoginViewModel
+    // sharedViewModel
+    private val viewModel: ApplicationViewModel by activityViewModels()
 
     // onCreate
     override fun onCreateView(
@@ -40,9 +41,6 @@ class LoginFragment : Fragment() {
 
         // inflate LoginFragment views
         binding = FragmentLoginBinding.inflate(inflater)
-
-        // reference ApplicationViewModel
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         // create lifecyle bindings
         setLifeCycleBindings()
@@ -72,9 +70,6 @@ class LoginFragment : Fragment() {
             // observer for UserName editText view
             outlinedLayoutUserName.editText?.doOnTextChanged { userNameTextInput, _, _, _ ->
 
-                // update viewmodel userNameText
-                viewModel!!.updateUserName(userNameTextInput.toString())
-
                 // update helper text if input not null or blank
                 if (userNameTextInput.isNullOrBlank() != TRUE) {
                     removeUserNameHelperText()
@@ -86,9 +81,6 @@ class LoginFragment : Fragment() {
 
             // observer for Password editText view
             outlinedLayoutPassword.editText?.doOnTextChanged { passwordTextInput, _, _, _ ->
-
-                // update viewmodel passwordText
-                viewModel!!.updateUserPassword(passwordTextInput.toString())
 
                 // check if input not null or blank
                 if (passwordTextInput.isNullOrBlank() != TRUE) {
@@ -122,11 +114,14 @@ class LoginFragment : Fragment() {
     // navigation logic for button listener
     private fun buttonNavigationLogic() {
 
-        // viewmodel block
-        viewModel.apply {
+        binding.apply {
+            val username = outlinedLayoutUserName.editText!!.text
+            val password = outlinedLayoutPassword.editText!!.text
 
-            // check if userName & password are filled
-            if (this.editFieldsComplete()) {
+            if (username.isNullOrBlank() != TRUE && password.isNullOrBlank() != TRUE
+            ) {
+                // update ViewModel fields
+                updateViewModelFields(username.toString(), password.toString())
 
                 // clearEditTextFields
                 clearEditTextFields()
@@ -136,12 +131,17 @@ class LoginFragment : Fragment() {
                 binding.root.findNavController().navigate(action)
 
             } else {    // set helper text if not complete
-                setHelperText()
+                setHelperText(username, password)
 
                 // log
                 timber(TAG, HELPER_TEXT, Priority.ERROR)
             }
         }
+    }
+
+    private fun updateViewModelFields(username: String, password: String) {
+        viewModel.updateUserName(username)
+        viewModel.updateUserPassword(password)
     }
 
     // clear editTextFields
@@ -158,25 +158,30 @@ class LoginFragment : Fragment() {
     private fun setUserNameHelperText() {
         binding.outlinedLayoutUserName.helperText = HELPER_TEXT
     }
+
     //#2
     private fun removeUserNameHelperText() {
         binding.outlinedLayoutUserName.helperText = null
     }
+
     //#3
     private fun setPasswordHelperText() {
         binding.outlinedLayoutPassword.helperText = HELPER_TEXT
     }
+
     //#4
     private fun removePasswordHelperText() {
         binding.outlinedLayoutPassword.helperText = null
     }
+
     //#5
-    private fun setHelperText() {
-        if (viewModel.userName.value.isNullOrBlank()) {
+    private fun setHelperText(username: Editable?, password: Editable?) {
+
+        if (username.isNullOrBlank()) {
             setUserNameHelperText()
         }
 
-        if (viewModel.userPassword.value.isNullOrBlank()) {
+        if (password.isNullOrBlank()) {
             setPasswordHelperText()
         }
     }

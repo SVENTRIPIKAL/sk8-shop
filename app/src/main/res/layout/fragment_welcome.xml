@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sventripikal.sk8_shop.screens.LoginViewModel" />
+            type="com.sventripikal.sk8_shop.screens.ApplicationViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="Hi {userName},\nWelcome to Sk8-Shop!"
+                    android:text="@{viewModel.welcomeGreeting}"
                     android:textAlignment="center"
                     android:textAppearance="@style/FragmentTextView_TextAppearance_LARGE"
                     android:textColor="@color/white"
@@ -105,10 +105,10 @@
     </LinearLayout>
 </layout>
 <!--
-6. Create a new Welcome screen destination that includes:   [_]
+6. Create a new Welcome screen destination that includes:   X
 
-   * A new layout
-   * At least 2 textviews
+   * A new layout               X
+   * At least 2 textviews       X
    * A navigation button with actions to navigate to the instructions screen
 
 7. Create a new Instruction destination that includes:  [_]

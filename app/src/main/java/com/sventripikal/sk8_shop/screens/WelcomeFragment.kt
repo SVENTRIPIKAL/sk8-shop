@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.R
@@ -29,6 +31,9 @@ class WelcomeFragment : Fragment() {
     // image Gif
     private lateinit var imageView: ImageView
 
+    // sharedViewModel
+    private val viewModel: ApplicationViewModel by activityViewModels()
+
     // onCreate
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,11 +48,29 @@ class WelcomeFragment : Fragment() {
             R.drawable.cool_alien_on_skateboard_transparent
         ).into(imageView)
 
+        // set bindings
+        setLifeCycleBindings()
+
+        // observers
+        setUIObservers()
+
         // log
         timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 
         // return root layout
         return binding.root
+    }
+
+    private fun setLifeCycleBindings() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+    }
+
+    private fun setUIObservers() {
+        // observe userName & update greeting on change
+        viewModel.userName.observe(viewLifecycleOwner, Observer {
+            viewModel.updateGreeting(it)
+        })
     }
 
 
@@ -80,10 +103,10 @@ class WelcomeFragment : Fragment() {
     }
 }
 /**
-6. Create a new Welcome screen destination that includes:   [-]
+6. Create a new Welcome screen destination that includes:   X
 
- * A new layout [-]
- * At least 2 textviews [-]
+ * A new layout X
+ * At least 2 textviews X
  * A navigation button with actions to navigate to the instructions screen [-]
 
 7. Create a new Instruction destination that includes:  [-]
