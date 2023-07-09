@@ -10,4 +10,6 @@
     <string name="welcome_screen">WELCOME SCREEN</string>
     <string name="on_boarding">On-boarding</string>
     <string name="forward_arrow">Forward Arrow</string>
+    <string name="card_supporting_text">A place for browsing your favorite skatboard brands accessories.\n\nClick on the \'Floating Action Button\' for further instructions on how to use this app.</string>
+    <string name="alien_gif">Alien Gif</string>
 </resources>

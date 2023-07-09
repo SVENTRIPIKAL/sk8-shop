@@ -12,7 +12,9 @@ private const val MESSAGE_INIT = "[ViewModel] INIT"
 private const val MESSAGE_CLEARED = "[ViewModel] ON-CLEARED"
 
 class ApplicationViewModel : ViewModel() {
-
+    /**
+     * LOGIN FRAGMENT
+     */
     // user login userName
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String>
@@ -23,11 +25,6 @@ class ApplicationViewModel : ViewModel() {
     val userPassword: LiveData<String>
         get() = _userPassword
 
-    // user Welcome greeting
-    private val _welcomeGreeting = MutableLiveData<String>()
-    val welcomeGreeting: LiveData<String>
-        get() = _welcomeGreeting
-
     // assign userName value - lambda
     val updateUserName: (String) -> Unit = {
         _userName.value = it
@@ -37,6 +34,14 @@ class ApplicationViewModel : ViewModel() {
     val updateUserPassword: (String) -> Unit = {
         _userPassword.value = it
     }
+
+    /**
+     * GREETING FRAGMENT
+     */
+    // user Welcome greeting
+    private val _welcomeGreeting = MutableLiveData<String>()
+    val welcomeGreeting: LiveData<String>
+        get() = _welcomeGreeting
 
     // assign greeting value - lambda
     val updateGreeting: (String) -> Unit = { user ->

@@ -22,4 +22,8 @@
     <dimen name="textSize_18sp">18sp</dimen>
     <dimen name="textSize_25sp">25sp</dimen>
     <dimen name="textSize_50sp">50sp</dimen>
+    <dimen name="textSize_10sp">10sp</dimen>
+    <dimen name="textSize_21sp">21sp</dimen>
+    <dimen name="margin_32dp">32dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
 </resources>

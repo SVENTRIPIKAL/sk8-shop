@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <!-- constraint layout -->
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -8,6 +9,7 @@
         tools:context=".MainActivity"
         style="@style/MainActivity_Style" >
 
+        <!-- action bar toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBar"
             style="@style/ActionBar_Style"
@@ -21,7 +23,7 @@
             app:titleTextAppearance="@style/ActionBar_TextAppearance"
             app:titleTextColor="@color/lightGreen" />
 
-
+        <!-- fragment navhost view -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
