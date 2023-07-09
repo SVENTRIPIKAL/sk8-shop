@@ -25,15 +25,15 @@
             android:layout_marginBottom="50dp"
             android:text="@string/user_login"
             android:textSize="@dimen/textSize_50sp"
-            app:layout_constraintBottom_toTopOf="@+id/outlinedLayout_Email"
-            app:layout_constraintEnd_toEndOf="@+id/outlinedLayout_Email"
-            app:layout_constraintStart_toStartOf="@+id/outlinedLayout_Email"
+            app:layout_constraintBottom_toTopOf="@+id/outlinedLayout_UserName"
+            app:layout_constraintEnd_toEndOf="@+id/outlinedLayout_UserName"
+            app:layout_constraintStart_toStartOf="@+id/outlinedLayout_UserName"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedLayout_Email"
+            android:id="@+id/outlinedLayout_UserName"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
 
-            android:hint="@string/email"
+            android:hint="@string/userName"
             android:textColorHint="@color/black"
             app:boxBackgroundColor="@color/white"
 
@@ -98,7 +98,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/outlinedLayout_Email"
+            app:layout_constraintTop_toBottomOf="@+id/outlinedLayout_UserName"
             app:startIconContentDescription="@string/password_logo"
             app:startIconDrawable="@drawable/filled_lock_24"
             app:startIconTint="@color/lightGreen">

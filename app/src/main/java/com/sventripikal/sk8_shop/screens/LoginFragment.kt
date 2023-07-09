@@ -69,19 +69,19 @@ class LoginFragment : Fragment() {
         // Fragment bindings block
         binding.apply {
 
-            // observer for Email editText view
-            outlinedLayoutEmail.editText?.doOnTextChanged { emailTextInput, _, _, _ ->
+            // observer for UserName editText view
+            outlinedLayoutUserName.editText?.doOnTextChanged { userNameTextInput, _, _, _ ->
 
-                // update viewmodel emailText
-                viewModel!!.updateUserEmail(emailTextInput.toString())
+                // update viewmodel userNameText
+                viewModel!!.updateUserName(userNameTextInput.toString())
 
                 // update helper text if input not null or blank
-                if (emailTextInput.isNullOrBlank() != TRUE) {
-                    removeEmailHelperText()
+                if (userNameTextInput.isNullOrBlank() != TRUE) {
+                    removeUserNameHelperText()
                 }
 
                 // log
-                timber(TAG, "EMAIL: ${viewModel!!.userEmail.value}", Priority.DEBUG)
+                timber(TAG, "USERNAME: ${viewModel!!.userName.value}", Priority.DEBUG)
             }
 
             // observer for Password editText view
@@ -125,7 +125,7 @@ class LoginFragment : Fragment() {
         // viewmodel block
         viewModel.apply {
 
-            // check if email & password are filled
+            // check if userName & password are filled
             if (this.editFieldsComplete()) {
 
                 // clearEditTextFields
@@ -146,7 +146,7 @@ class LoginFragment : Fragment() {
 
     // clear editTextFields
     private fun clearEditTextFields() {
-        binding.outlinedLayoutEmail.editText!!.text.clear()
+        binding.outlinedLayoutUserName.editText!!.text.clear()
         binding.outlinedLayoutPassword.editText!!.text.clear()
     }
 
@@ -155,12 +155,12 @@ class LoginFragment : Fragment() {
      * helper text functions to add / remove
      */
     //#1
-    private fun setEmailHelperText() {
-        binding.outlinedLayoutEmail.helperText = HELPER_TEXT
+    private fun setUserNameHelperText() {
+        binding.outlinedLayoutUserName.helperText = HELPER_TEXT
     }
     //#2
-    private fun removeEmailHelperText() {
-        binding.outlinedLayoutEmail.helperText = null
+    private fun removeUserNameHelperText() {
+        binding.outlinedLayoutUserName.helperText = null
     }
     //#3
     private fun setPasswordHelperText() {
@@ -172,8 +172,8 @@ class LoginFragment : Fragment() {
     }
     //#5
     private fun setHelperText() {
-        if (viewModel.userEmail.value.isNullOrBlank()) {
-            setEmailHelperText()
+        if (viewModel.userName.value.isNullOrBlank()) {
+            setUserNameHelperText()
         }
 
         if (viewModel.userPassword.value.isNullOrBlank()) {

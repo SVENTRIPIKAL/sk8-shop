@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.sventripikal.sk8_shop.Priority
+import com.sventripikal.sk8_shop.R
 import com.sventripikal.sk8_shop.TAG
 import com.sventripikal.sk8_shop.databinding.FragmentWelcomeBinding
 import com.sventripikal.sk8_shop.timber
@@ -23,6 +26,9 @@ class WelcomeFragment : Fragment() {
     // viewBinder
     private lateinit var binding: FragmentWelcomeBinding
 
+    // image Gif
+    private lateinit var imageView: ImageView
+
     // onCreate
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +37,11 @@ class WelcomeFragment : Fragment() {
         // inflate WelcomeFragment views
         binding = FragmentWelcomeBinding.inflate(inflater)
 
-
-
+        // add gif into view with Glide
+        imageView = binding.alienGif
+        Glide.with(requireActivity()).load(
+            R.drawable.cool_alien_on_skateboard_transparent
+        ).into(imageView)
 
         // log
         timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)

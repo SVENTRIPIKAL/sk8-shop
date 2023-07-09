@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">sk8-shop</string>
     <string name="user_login">User Login</string>
-    <string name="email">Email</string>
+    <string name="userName">Username</string>
     <string name="password">Password</string>
     <string name="email_logo">Email Logo</string>
     <string name="password_logo">Password Logo</string>
@@ -9,4 +9,5 @@
     <string name="register_button_text">Register</string>
     <string name="welcome_screen">WELCOME SCREEN</string>
     <string name="on_boarding">On-boarding</string>
+    <string name="forward_arrow">Forward Arrow</string>
 </resources>

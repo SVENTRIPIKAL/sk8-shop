@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
 
-    <color name="darkBlue">#1E3953</color>
-    <color name="darkGreen">#2B4D59</color>
-    <color name="lightGreen">#39998E</color>
-    <color name="lightYellow">#FFDC7C</color>
-    <color name="lightOrange">#FFAA67</color>
-    <color name="darkOrange">#DA674A</color>
-    <color name="lightRed">#DA4A75</color>
-    <color name="darkRed">#9E3121</color>
+    <color name="darkBlue">#1e3953</color>
+    <color name="darkPurple">#400080</color>
+    <color name="darkGreen">#2b4d59</color>
+    <color name="darkOrange">#da674a</color>
+    <color name="darkRed">#9e3121</color>
+    <color name="lightYellow">#ffdc7c</color>
+    <color name="lightPurple">#6600ad</color>
+    <color name="lightGreen">#39998e</color>
+    <color name="lightOrange">#ffaa67</color>
+    <color name="lightRed">#da4a75</color>
 </resources>

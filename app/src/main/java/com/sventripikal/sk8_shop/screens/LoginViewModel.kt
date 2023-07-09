@@ -14,19 +14,19 @@ private const val MESSAGE_CLEARED = "[ViewModel] ON-CLEARED"
 
 class LoginViewModel: ViewModel() {
 
-    // user login email
-    private val _userEmail = MutableLiveData<String>()
-    val userEmail: LiveData<String>
-        get() = _userEmail
+    // user login userName
+    private val _userName = MutableLiveData<String>()
+    val userName: LiveData<String>
+        get() = _userName
 
     // user login password
     private val _userPassword = MutableLiveData<String>()
     val userPassword: LiveData<String>
         get() = _userPassword
 
-    // assign userEmail value - lambda
-    val updateUserEmail: (String) -> Unit = {
-        _userEmail.value = it
+    // assign userName value - lambda
+    val updateUserName: (String) -> Unit = {
+        _userName.value = it
     }
 
     // assign userPassword value - lambda
@@ -34,10 +34,14 @@ class LoginViewModel: ViewModel() {
         _userPassword.value = it
     }
 
-    // check if email & password not null or blank
+    // check if userName & password not null or blank
     fun editFieldsComplete(): Boolean {
-        return userEmail.value.isNullOrBlank() != TRUE &&
+        return userName.value.isNullOrBlank() != TRUE &&
                 userPassword.value.isNullOrBlank() != TRUE
+    }
+
+    fun greetUser(): String {
+        return "Hi $userName! Welcome to Sk8-Shop!"
     }
 
 
