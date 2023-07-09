@@ -6,8 +6,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        style="@style/MainActivity_Style" >
+        android:background="@color/lightYellow"
+        tools:context=".MainActivity" >
 
         <!-- action bar toolbar -->
         <androidx.appcompat.widget.Toolbar
@@ -20,6 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:title="@string/app_name"
+            android:elevation="@dimen/elevation_8dp"
             app:titleTextAppearance="@style/ActionBar_TextAppearance"
             app:titleTextColor="@color/lightGreen" />
 
@@ -36,7 +37,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolBar"
             app:navGraph="@navigation/nav_graph"
 
-            tools:layout = "@layout/fragment_login"/>
+            tools:layout = "@layout/fragment_instructions"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
