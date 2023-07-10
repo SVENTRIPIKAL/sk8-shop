@@ -65,9 +65,13 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                // FOR SCREENS:          hide back arrow | add overflow menu | add drawer
-                R.id.welcomeFragment,
+                // FOR SCREENS:
+                R.id.welcomeFragment,        // hide toolbar back nav
                 R.id.instructionsFragment -> binding.toolBar.navigationIcon = null
+                R.id.listingsFragment -> {
+                    // hide toolbar back nav | add overflow menu | add drawer
+                    binding.toolBar.navigationIcon = null
+                }
             }
         }
     }

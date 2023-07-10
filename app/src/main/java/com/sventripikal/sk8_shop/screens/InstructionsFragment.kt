@@ -73,14 +73,16 @@ class InstructionsFragment : Fragment() {
         // binding block
         binding.apply {
 
-            // set FAB back navigation
+            // set FAB back navigation - WelcomeFragment
             cardFloatingActionButton.setOnClickListener {
                 val action = InstructionsFragmentDirections.actionInstructionsFragmentToWelcomeFragment()
                 findNavController().navigate(action)
             }
-            // set FAB forward navigation
+
+            // set FAB forward navigation - ListingsFragment
             letsGoFloatingActionButton.setOnClickListener {
-                // ACTION FORWARD
+                val action = InstructionsFragmentDirections.actionInstructionsFragmentToListingsFragment()
+                findNavController().navigate(action)
             }
         }
     }
