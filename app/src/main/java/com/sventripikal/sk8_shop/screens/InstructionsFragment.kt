@@ -69,10 +69,19 @@ class InstructionsFragment : Fragment() {
 
     // UI observers
     private fun setUIObservers() {
-        // set FAB onclick listener
-        binding.cardFloatingActionButton.setOnClickListener {
-            val action = InstructionsFragmentDirections.actionInstructionsFragmentToWelcomeFragment()
-            findNavController().navigate(action)
+
+        // binding block
+        binding.apply {
+
+            // set FAB back navigation
+            cardFloatingActionButton.setOnClickListener {
+                val action = InstructionsFragmentDirections.actionInstructionsFragmentToWelcomeFragment()
+                findNavController().navigate(action)
+            }
+            // set FAB forward navigation
+            letsGoFloatingActionButton.setOnClickListener {
+                // ACTION FORWARD
+            }
         }
     }
 
