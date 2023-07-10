@@ -1,14 +1,20 @@
-package com.sventripikal.sk8_shop
+package com.sventripikal.sk8_shop.screens
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.sventripikal.sk8_shop.databinding.FragmentWelcomeBinding
-import com.sventripikal.sk8_shop.screens.ApplicationViewModel
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.sventripikal.sk8_shop.Priority
+import com.sventripikal.sk8_shop.R
+import com.sventripikal.sk8_shop.TAG
+import com.sventripikal.sk8_shop.databinding.FragmentInstructionsBinding
+import com.sventripikal.sk8_shop.timber
+
 
 private const val MESSAGE_CREATE = "[InstructionsFragment] ON-CREATE"
 private const val MESSAGE_START = "[InstructionsFragment] ON-START"
@@ -17,13 +23,12 @@ private const val MESSAGE_PAUSE = "[InstructionsFragment] ON-PAUSE"
 private const val MESSAGE_STOP = "[InstructionsFragment] ON-STOP"
 private const val MESSAGE_DESTROY = "[InstructionsFragment] ON-DESTROY"
 
-
 class InstructionsFragment : Fragment() {
 
     // viewBinder
-    private lateinit var binding: InstructionsFragment
+    private lateinit var binding: FragmentInstructionsBinding
 
-    // image Gif
+    // help animation Gif
     private lateinit var imageView: ImageView
 
     // sharedViewModel
@@ -33,11 +38,42 @@ class InstructionsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
+        // inflate InstructionsFragment views
+        binding = FragmentInstructionsBinding.inflate(inflater)
 
+        // add gif into view with Glide
+        imageView = binding.helpAnimationGif
+        Glide.with(requireActivity())
+            .load(R.drawable.help_animation)
+            .into(imageView)
 
-        return inflater.inflate(R.layout.fragment_instructions, container, false)
+        // set bindings
+        setLifeCycleBindings()
+
+        // set UI observers
+        setUIObservers()
+
+        // log
+        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
+
+        // return root layout
+        return binding.root
+    }
+
+    // lifecycle bindings
+    private fun setLifeCycleBindings() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+    }
+
+    // UI observers
+    private fun setUIObservers() {
+        // set FAB onclick listener
+        binding.cardFloatingActionButton.setOnClickListener {
+            val action = InstructionsFragmentDirections.actionInstructionsFragmentToWelcomeFragment()
+            findNavController().navigate(action)
+        }
     }
 
 

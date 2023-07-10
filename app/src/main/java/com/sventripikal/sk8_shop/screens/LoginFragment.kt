@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputLayout
+import com.sventripikal.sk8_shop.HELPER_TEXT
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
 import com.sventripikal.sk8_shop.TRUE
@@ -23,8 +24,6 @@ private const val MESSAGE_RESUME = "[LoginFragment] ON-RESUME"
 private const val MESSAGE_PAUSE = "[LoginFragment] ON-PAUSE"
 private const val MESSAGE_STOP = "[LoginFragment] ON-STOP"
 private const val MESSAGE_DESTROY = "[LoginFragment] ON-DESTROY"
-
-private const val HELPER_TEXT = "*COMPLETE TEXT FIELD*"
 
 class LoginFragment : Fragment() {
 
@@ -150,7 +149,6 @@ class LoginFragment : Fragment() {
         binding.outlinedLayoutPassword.editText!!.text.clear()
     }
 
-
     /**
      * helper text functions to add / remove
      */
@@ -185,6 +183,7 @@ class LoginFragment : Fragment() {
             setPasswordHelperText()
         }
     }
+
 
 
     /**

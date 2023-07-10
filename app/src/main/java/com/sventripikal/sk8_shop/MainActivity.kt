@@ -65,12 +65,12 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                // WELCOME:          hide back arrow | add overflow menu | add drawer
-                R.id.welcomeFragment -> binding.toolBar.navigationIcon = null
+                // FOR SCREENS:          hide back arrow | add overflow menu | add drawer
+                R.id.welcomeFragment,
+                R.id.instructionsFragment -> binding.toolBar.navigationIcon = null
             }
         }
     }
-
 
     // handle up navigation
     override fun onSupportNavigateUp(): Boolean {
@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
 
 
     /**
@@ -108,7 +109,3 @@ class MainActivity : AppCompatActivity() {
         timber(TAG, MESSAGE_DESTROY, Priority.ERROR)
     }
 }
-
-/**
- * MATERIAL DESIGN 3 minSDK = 32
- */

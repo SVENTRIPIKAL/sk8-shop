@@ -29,24 +29,26 @@
             android:contentDescription="@string/skateboarding_background_image"/>
 
 
-        <!-- Linearlayout for single view -->
-        <LinearLayout
+        <!-- Constraint layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="match_parent">
 
             <!-- material design card view -->
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/materialCardView"
                 style="@style/Widget.App.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
                 android:layout_margin="@dimen/margin_8dp"
                 android:elevation="@dimen/elevation_8dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/letsGoFloatingActionButton"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintVertical_chainStyle="packed"
                 app:strokeColor="@color/lightPurple"
                 app:strokeWidth="@dimen/width_3dp">
 
@@ -58,77 +60,81 @@
                     android:orientation="vertical"
                     android:padding="@dimen/padding_16dp">
 
-                    <!-- alien gif -->
+                    <!-- animation gif -->
                     <ImageView
-                        android:id="@+id/alienGif"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/help_animation_gif"
+                        android:layout_width="100dp"
                         android:layout_height="@dimen/height_100dp"
-                        android:layout_marginTop="@dimen/margin_32dp"
-                        android:layout_marginBottom="@dimen/margin_20dp"
-                        android:contentDescription="@string/alien_gif"
-                        app:layout_constraintBottom_toTopOf="@+id/cardWelcomeText"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
+                        android:contentDescription="@string/help_animation"
+                        app:layout_constraintBottom_toTopOf="@+id/cardFloatingActionButton"
+                        app:layout_constraintStart_toStartOf="@+id/cardFloatingActionButton"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <!-- title text -->
-                    <TextView
-                        android:id="@+id/cardWelcomeText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_20dp"
-                        android:text="@{viewModel.welcomeGreeting}"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/FragmentTextView_TextAppearance_LARGE"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/textSize_21sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/cardSupportingText"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/alienGif" />
 
                     <!-- supporting text -->
                     <TextView
                         android:id="@+id/cardSupportingText"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/card_supporting_text"
+                        android:lineSpacingMultiplier="1.5"
+                        android:text="Since we are a fairly new business, we only have a select list of accessories to choose
+from and need your help!\nWe encourage you to provide us with feedback by clicking the [+]
+button in our Listings page to navigate to our Details page.\nOnce there, you can fill out any number
+of item details to submit to our listings page in order to promote the next fire product.\nGive it a try!"
                         android:textAlignment="center"
                         android:textAppearance="@style/FragmentTextView_TextAppearance_SMALL"
                         android:textColor="@color/white"
                         android:textSize="@dimen/textSize_10sp"
                         android:textStyle="italic"
-                        app:layout_constraintBottom_toTopOf="@+id/cardFloatingActionButton"
+                        app:layout_constraintBottom_toBottomOf="@+id/help_animation_gif"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.488"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cardWelcomeText" />
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/help_animation_gif"
+                        app:layout_constraintTop_toTopOf="@+id/help_animation_gif" />
 
                     <!-- material design floating action button -->
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/cardFloatingActionButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_20dp"
-                        android:layout_marginBottom="@dimen/margin_32dp"
+                        android:layout_marginStart="43dp"
+                        android:layout_marginEnd="280dp"
                         android:backgroundTint="@color/lightGreen"
                         android:contentDescription="@string/forward_arrow"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.8"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cardSupportingText"
+                        app:layout_constraintTop_toBottomOf="@+id/help_animation_gif"
                         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.ExtraLarge"
-                        app:srcCompat="@drawable/arrow_forward_24"
+                        app:srcCompat="@drawable/round_arrow_back_24"
                         app:tint="@color/lightYellow" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
+            <!-- material design extended floating action button -->
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/letsGoFloatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/lightPurple"
+                android:contentDescription="@string/extended_floating_action_button"
+                android:fontFamily="@font/charmelade_font"
+                android:text="@string/let_s_go"
+                android:textColor="@color/lightYellow"
+                android:textStyle="italic"
+                app:icon="@drawable/round_forward_24"
+                app:iconTint="@color/lightYellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+                app:layout_constraintVertical_bias="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
 

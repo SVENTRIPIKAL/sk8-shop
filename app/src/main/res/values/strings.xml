@@ -10,8 +10,11 @@
     <string name="welcome_screen">WELCOME SCREEN</string>
     <string name="on_boarding">On-Boarding</string>
     <string name="forward_arrow">Forward Arrow</string>
-    <string name="card_supporting_text">A place for browsing your favorite skatboard brands &amp; accessories.\n\nClick on the \"Floating Action Button\" for further instructions on how to use this app.</string>
+    <string name="welcome_card_supporting_text">A place for browsing your favorite skatboard brands &amp; accessories.\n\nClick on the \"Floating Action Button\" for further instructions on how to use this app.</string>
     <string name="alien_gif">Alien Gif</string>
     <string name="skateboarding_background_image">skateboarding background image</string>
     <string name="instructions">Instructions</string>
+    <string name="extended_floating_action_button">Extended Floating Action Button</string>
+    <string name="let_s_go">Let\'s Go!</string>
+    <string name="help_animation">Help Animation</string>
 </resources>

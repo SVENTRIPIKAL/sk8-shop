@@ -4,6 +4,7 @@ import timber.log.Timber
 
 
 const val TAG = "_SVENTRIPIKAL"
+const val HELPER_TEXT = "*COMPLETE TEXT FIELD*"
 const val TRUE = true
 const val FALSE = false
 

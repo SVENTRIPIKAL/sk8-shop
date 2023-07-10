@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.R
@@ -44,9 +45,9 @@ class WelcomeFragment : Fragment() {
 
         // add gif into view with Glide
         imageView = binding.alienGif
-        Glide.with(requireActivity()).load(
-            R.drawable.cool_alien_on_skateboard_transparent
-        ).into(imageView)
+        Glide.with(requireActivity())
+            .load(R.drawable.cool_alien_on_skateboard_transparent)
+            .into(imageView)
 
         // set bindings
         setLifeCycleBindings()
@@ -71,7 +72,14 @@ class WelcomeFragment : Fragment() {
         viewModel.userName.observe(viewLifecycleOwner, Observer {
             viewModel.updateGreeting(it)
         })
+
+        // set listener for button click navigation
+        binding.cardFloatingActionButton.setOnClickListener {
+            val action = WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment()
+            findNavController().navigate(action)
+        }
     }
+
 
 
     /**
@@ -102,16 +110,3 @@ class WelcomeFragment : Fragment() {
         timber(TAG, MESSAGE_DESTROY, Priority.ERROR)
     }
 }
-/**
-6. Create a new Welcome screen destination that includes:   X
-
- * A new layout X
- * At least 2 textviews X
- * A navigation button with actions to navigate to the instructions screen [-]
-
-7. Create a new Instruction destination that includes:  [-]
-
- * A new layout [-]
- * At least 2 textviews [-]
- * A navigation button with actions to navigate to the shoe list screen [-]
- */
