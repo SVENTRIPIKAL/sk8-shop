@@ -61,20 +61,31 @@
                     android:padding="@dimen/padding_16dp">
 
                     <!-- animation gif -->
+
+                    <!-- supporting text -->
                     <ImageView
                         android:id="@+id/help_animation_gif"
                         android:layout_width="100dp"
                         android:layout_height="@dimen/height_100dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="50dp"
                         android:contentDescription="@string/help_animation"
                         app:layout_constraintBottom_toTopOf="@+id/cardFloatingActionButton"
-                        app:layout_constraintStart_toStartOf="@+id/cardFloatingActionButton"
+                        app:layout_constraintEnd_toStartOf="@+id/cardSupportingText"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!-- supporting text -->
+                    <!-- material design floating action button -->
+
                     <TextView
                         android:id="@+id/cardSupportingText"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="73dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="99dp"
                         android:lineSpacingMultiplier="1.5"
                         android:text="Since we are a fairly new business, we only have a select list of accessories to choose
 from and need your help!\nWe encourage you to provide us with feedback by clicking the [+]
@@ -85,19 +96,18 @@ of item details to submit to our listings page in order to promote the next fire
                         android:textColor="@color/white"
                         android:textSize="@dimen/textSize_10sp"
                         android:textStyle="italic"
-                        app:layout_constraintBottom_toBottomOf="@+id/help_animation_gif"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/help_animation_gif"
-                        app:layout_constraintTop_toTopOf="@+id/help_animation_gif" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <!-- material design floating action button -->
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/cardFloatingActionButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="43dp"
-                        android:layout_marginEnd="280dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="240dp"
+                        android:layout_marginBottom="32dp"
                         android:backgroundTint="@color/lightGreen"
                         android:contentDescription="@string/forward_arrow"
                         app:layout_constraintBottom_toBottomOf="parent"
