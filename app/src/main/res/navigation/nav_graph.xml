@@ -5,6 +5,7 @@
     android:id="@+id/navigation"
     app:startDestination="@id/loginFragment">
 
+    <!-- Login -->
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.sventripikal.sk8_shop.screens.LoginFragment"
@@ -20,6 +21,7 @@
             app:popUpToInclusive="false" />
     </fragment>
 
+    <!-- Welcome -->
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.sventripikal.sk8_shop.screens.WelcomeFragment"
@@ -30,6 +32,7 @@
             app:destination="@id/instructionsFragment" />
     </fragment>
 
+    <!-- Instructions -->
     <fragment
         android:id="@+id/instructionsFragment"
         android:name="com.sventripikal.sk8_shop.screens.InstructionsFragment"
@@ -44,6 +47,7 @@
             app:popUpTo="@id/loginFragment" />
     </fragment>
 
+    <!-- Listings -->
     <fragment
         android:id="@+id/listingsFragment"
         android:name="com.sventripikal.sk8_shop.screens.ListingsFragment"

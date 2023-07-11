@@ -9,13 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <!-- linear layout for single view -->
+        <!-- constraint layout -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/lightYellow"
             android:orientation="vertical" >
 
+            <!-- app toolbar -->
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/app_toolBar"
                 style="@style/ActionBar_Style"

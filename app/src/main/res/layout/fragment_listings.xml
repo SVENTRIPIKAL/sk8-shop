@@ -11,62 +11,25 @@
             type="com.sventripikal.sk8_shop.screens.ApplicationViewModel" />
     </data>
 
-    <!-- Drawer layout -->
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/listings_DrawerLayout"
+    <!-- Constraint layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        tools:context=".screens.ListingsFragment">
 
-        <!-- Constraint layout -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"
-            tools:context=".screens.ListingsFragment">
-
-            <!-- temp view -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="LISTINGS SCREEN" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Navigation view for drawer menu items -->
-        <com.google.android.material.navigation.NavigationView
+        <!-- temp view -->
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:menu="@menu/nav_drawer_menu"/>
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="LISTINGS SCREEN" />
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
-<!--
-* DRAWER:
--APP NAME
--CATEGORIES     [clickable]
--LOGOUT         [clickable]
-
-* TOOLBAR
--BURGER ICON    [clickable]
--SEARCH BAR     [search listings]|[editable]|[updates listing by search]
--USER ICON      [clickable]
-    -Dialogue Menu
-        -User Icon
-        -logout [clickable]
-
-* LISTINGS      [vertical scrollable]:
--VERTICAL LIST  [all items descending new->old]
-    -item icon
-    -item name
-    -item description
-
-* EXTENDED FAB  [+ Add]|[clickable]|[navigate to Detail Fragment]
--->

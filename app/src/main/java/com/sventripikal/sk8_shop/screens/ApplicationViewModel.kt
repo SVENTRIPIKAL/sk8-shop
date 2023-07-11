@@ -12,6 +12,7 @@ private const val MESSAGE_INIT = "[ViewModel] INIT"
 private const val MESSAGE_CLEARED = "[ViewModel] ON-CLEARED"
 
 class ApplicationViewModel : ViewModel() {
+
     /**
      * LOGIN FRAGMENT
      */
@@ -34,6 +35,7 @@ class ApplicationViewModel : ViewModel() {
     val updateUserPassword: (String) -> Unit = {
         _userPassword.value = it
     }
+
 
     /**
      * GREETING FRAGMENT

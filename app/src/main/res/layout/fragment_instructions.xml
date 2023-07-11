@@ -28,7 +28,6 @@
             android:elevation="@dimen/elevation_0dp"
             android:contentDescription="@string/skateboarding_background_image"/>
 
-
         <!-- Constraint layout -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -61,8 +60,6 @@
                     android:padding="@dimen/padding_16dp">
 
                     <!-- animation gif -->
-
-                    <!-- supporting text -->
                     <ImageView
                         android:id="@+id/help_animation_gif"
                         android:layout_width="@dimen/width_100dp"
@@ -77,8 +74,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!-- material design floating action button -->
-
+                    <!-- supporting text -->
                     <TextView
                         android:id="@+id/cardSupportingText"
                         android:layout_width="@dimen/width_150dp"
@@ -101,6 +97,7 @@ of item details to submit to our listings page in order to promote the next fire
                         app:layout_constraintStart_toEndOf="@+id/help_animation_gif"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <!-- material design floating action button -->
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/cardFloatingActionButton"
                         android:layout_width="wrap_content"
