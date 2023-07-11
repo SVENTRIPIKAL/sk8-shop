@@ -40,10 +40,16 @@
         tools:layout="@layout/fragment_instructions" >
         <action
             android:id="@+id/action_instructionsFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_instructionsFragment_to_listingsFragment"
             app:destination="@id/listingsFragment"
+            app:enterAnim="@anim/slide_from_left_to_middle"
+            app:exitAnim="@anim/slide_from_middle_to_left"
+            app:popEnterAnim="@anim/slide_from_left_to_middle"
+            app:popExitAnim="@anim/slide_from_middle_to_left"
             app:popUpTo="@id/loginFragment" />
     </fragment>
 
