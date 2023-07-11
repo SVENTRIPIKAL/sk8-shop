@@ -1,43 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <!-- constraint layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <!-- Drawer layout -->
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/lightYellow"
-        tools:context=".MainActivity" >
+        android:layout_height="match_parent" >
 
-        <!-- action bar toolbar -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolBar"
-            style="@style/ActionBar_Style"
+        <!-- linear layout for single view -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_constraintBottom_toTopOf="@id/nav_host_fragment"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/app_name"
-            android:elevation="@dimen/elevation_8dp"
-            app:titleTextAppearance="@style/ActionBar_TextAppearance"
-            app:titleTextColor="@color/lightGreen" />
+            android:layout_height="match_parent"
+            android:background="@color/lightYellow"
+            android:orientation="vertical" >
 
-        <!-- fragment navhost view -->
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="@dimen/width_0dp"
-            android:layout_height="@dimen/width_0dp"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolBar"
-            app:navGraph="@navigation/nav_graph"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/app_toolBar"
+                style="@style/ActionBar_Style"
+                app:titleTextAppearance="@style/ActionBar_TextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                android:background="@color/darkOrange"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/nav_host_fragment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
 
-            tools:layout = "@layout/fragment_instructions"/>
+                tools:title="@string/app_name" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- fragment navhost view -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="@dimen/width_0dp"
+                android:layout_height="@dimen/width_0dp"
+                app:defaultNavHost="true"
+                app:layout_constraintTop_toBottomOf="@id/app_toolBar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:navGraph="@navigation/nav_graph"
+
+                tools:layout = "@layout/fragment_login" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Navigation view for drawer menu items -->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/drawer_navView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/nav_drawer_menu" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
 </layout>

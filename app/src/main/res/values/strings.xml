@@ -18,4 +18,6 @@
     <string name="let_s_go">Let\'s Go!</string>
     <string name="help_animation">Help Animation</string>
     <string name="listings">Listings</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_closed">Closed</string>
 </resources>

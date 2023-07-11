@@ -2,13 +2,16 @@ package com.sventripikal.sk8_shop
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.sventripikal.sk8_shop.databinding.ActivityMainBinding
 
 
@@ -24,11 +27,24 @@ class MainActivity : AppCompatActivity() {
     // viewBinder
     private lateinit var binding: ActivityMainBinding
 
+    // drawer layout
+    private lateinit var drawerLayout: DrawerLayout
+
+    // drawer nav items
+    private lateinit var drawerItems: NavigationView
+
+    // app toolbar
+    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
+
     // action bar config
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    // drawer toggle
+    private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+
     // navController
     private lateinit var navController: NavController
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,17 +52,8 @@ class MainActivity : AppCompatActivity() {
         // inflate MainActivity views
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
 
-        // setup action bar
-        setSupportActionBar(binding.toolBar)
-
-        // get navController from FragmentContainerView
-        navController = NavHostFragment.findNavController(binding.navHostFragment.getFragment())
-
-        // provide navGraph to appBarConfig
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-
-        // setup action bar with navController & config
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        // assign references
+        setBindings()
 
         // setup navController destination listener
         setupActionBarDestinationListener()
@@ -58,7 +65,41 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    // update action bar icons by destination
+    // assign main bindings
+    private fun setBindings() {
+        // drawer layout
+        drawerLayout = binding.drawerLayout
+
+        // drawer nav items
+        drawerItems = binding.drawerNavView
+
+        // drawer toggle
+        actionBarDrawerToggle = ActionBarDrawerToggle(
+            this, drawerLayout, R.string.drawer_open, R.string.drawer_closed
+        )
+
+        // assign toolbar
+        toolbar = binding.appToolBar
+
+        // get navController from FragmentContainerView
+        navController = NavHostFragment.findNavController(binding.navHostFragment.getFragment())
+
+        // get appBarConfig - login & listing as TopLevelIds
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.loginFragment, R.id.listingsFragment), drawerLayout
+        )
+
+        // setup toolbar
+        setSupportActionBar(toolbar)
+
+        // setup action bar with navController, config, & drawer
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+
+        // setup action bar controller with drawer menu items
+        NavigationUI.setupWithNavController(drawerItems, navController)
+    }
+
+    // update action bar by destination
     private fun setupActionBarDestinationListener() {
 
         // add destination listeners
@@ -66,15 +107,32 @@ class MainActivity : AppCompatActivity() {
 
             when (destination.id) {
                 // FOR SCREENS:
-                R.id.welcomeFragment,        // hide toolbar back nav
-                R.id.instructionsFragment -> binding.toolBar.navigationIcon = null
+                R.id.loginFragment,
+                R.id.welcomeFragment,
+                R.id.instructionsFragment ->  {
+                    // hide & lock drawer
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    // hide [hamburger] icon
+                    supportActionBar?.setDisplayHomeAsUpEnabled(FALSE)
+                }
                 R.id.listingsFragment -> {
-                    // hide toolbar back nav | add overflow menu | add drawer
-                    binding.toolBar.navigationIcon = null
+                    // set drawer toggle listener
+                    setDrawerToggleListener()
+                    // unlock & enable drawer
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+                    // unhide [hamburger] icon
+                    supportActionBar?.setDisplayHomeAsUpEnabled(TRUE)
                 }
             }
         }
     }
+
+    // drawer onclick listener
+    private fun setDrawerToggleListener() {
+        drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle.syncState()
+    }
+
 
     // handle up navigation
     override fun onSupportNavigateUp(): Boolean {
