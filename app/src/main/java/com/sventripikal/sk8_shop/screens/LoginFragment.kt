@@ -38,6 +38,9 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
+        // log
+        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
+
         // inflate LoginFragment views
         binding = FragmentLoginBinding.inflate(inflater)
 
@@ -46,9 +49,6 @@ class LoginFragment : Fragment() {
 
         // set UI observers
         setObserverUI()
-
-        // log
-        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 
         // return root layout
         return binding.root

@@ -41,6 +41,11 @@
         <item name="fontFamily">@font/charmelade_font</item>
         <item name="android:textSize">@dimen/textSize_14sp</item>
     </style>
+    
+    <style name="itemListViewStyle" parent="FragmentTextView_TextAppearance_LARGE">
+        <item name="android:textColor"> @color/darkPurple </item>
+        <item name="android:textAlignment"> center </item>
+    </style>
 
 
 

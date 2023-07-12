@@ -1,14 +1,19 @@
 package com.sventripikal.sk8_shop.screens
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.sventripikal.sk8_shop.Priority
+import com.sventripikal.sk8_shop.R
 import com.sventripikal.sk8_shop.TAG
 import com.sventripikal.sk8_shop.databinding.FragmentListingsBinding
+import com.sventripikal.sk8_shop.models.SkateBoardItem
 import com.sventripikal.sk8_shop.timber
 
 
@@ -27,10 +32,16 @@ class ListingsFragment : Fragment() {
     // view Binder
     private lateinit var binding: FragmentListingsBinding
 
+    // list of views LinearLayout
+    private lateinit var itemListView: LinearLayout
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        // log
+        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 
         // inflate layout & views
         binding = FragmentListingsBinding.inflate(inflater)
@@ -40,9 +51,6 @@ class ListingsFragment : Fragment() {
 
         // create observers
         setUIObservers()
-
-        // log
-        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 
         // return root layout
         return binding.root
@@ -54,6 +62,50 @@ class ListingsFragment : Fragment() {
 
         // lifecycle owner
         binding.lifecycleOwner = this
+
+        // linear layout view list
+        itemListView = binding.itemListView
+
+        // bind viewModel list to Layout
+        bindItemsToLayout()
+    }
+
+    // add Item Names to Layout as TextViews
+    @SuppressLint("ResourceAsColor")
+    private fun bindItemsToLayout() {
+
+        // temp value
+        var index = 0
+
+        // viewmodel item list
+        viewModel.itemsList.value!!.forEach {
+
+            //update index
+            index++
+
+            // create ButtonView
+            val button = Button(requireContext())
+
+            // buttonView block
+            button.apply {
+
+                // assign text to view
+                text = setText(index, it)
+
+                // assign view style
+                setTextAppearance(R.style.itemListViewStyle)
+
+                // add view to layout
+                itemListView.addView(this)
+            }
+
+            // log
+            timber(TAG, "${it.itemName} added to $itemListView", Priority.DEBUG)
+        }
+    }
+
+    private fun setText(index: Int, item: SkateBoardItem): String {
+        return "${index}.)  ${item.itemName}"
     }
 
     // set ui listeners

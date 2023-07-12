@@ -3,17 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:ignore="HardcodedText" >
 
-    <!-- ADD ICONS for each item -->
-    <item
-        android:id="@+id/appName_drawer"
-        android:title="@string/app_name" />
-
     <!-- clickable dropDown [element][toymachine][darkstar] -->
     <item
         android:id="@+id/brands_drawer"
         android:title="Brands" />
 
-    <!-- clickable dropDown [decks][wheels] -->
+    <!-- clickable dropDown [decks] -->
     <item
         android:id="@+id/categories_drawer"
         android:title="Categories" />

@@ -83,10 +83,7 @@
                         android:layout_marginEnd="@dimen/margin_32dp"
                         android:layout_marginBottom="@dimen/margin_99dp"
                         android:lineSpacingMultiplier="1.5"
-                        android:text="Since we are a fairly new business, we only have a select list of accessories to choose
-from and need your help!\nWe encourage you to provide us with feedback by clicking the [+]
-button in our Listings page to navigate to our Details page.\nOnce there, you can fill out any number
-of item details to submit to our listings page in order to promote the next fire product.\nGive it a try!"
+                        android:text="@string/instructions_supporting_text"
                         android:textAlignment="center"
                         android:textAppearance="@style/FragmentTextView_TextAppearance_SMALL"
                         android:textColor="@color/white"

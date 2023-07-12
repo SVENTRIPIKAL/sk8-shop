@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
+import com.sventripikal.sk8_shop.models.SkateBoardItem
+import com.sventripikal.sk8_shop.listOfBoards
 import com.sventripikal.sk8_shop.timber
 
 
@@ -51,9 +53,40 @@ class ApplicationViewModel : ViewModel() {
     }
 
 
+    /**
+     * LISTINGS FRAGMENT
+     */
+    // list of items
+    private val _itemsList = MutableLiveData(listOfBoards)
+    val itemsList: LiveData<MutableList<SkateBoardItem>>
+        get() = _itemsList
+
+
+    // reassign new _itemList.value list
+    private fun updateItemList() {
+        _itemsList.value = mutableList
+    }
+
+    // empty mutable list to add updates to ItemList
+    private val mutableList = mutableListOf<SkateBoardItem>()
+
+    // clear mutableList / add new item / append all _ItemList values / reassign new _itemList.value
+    fun addItemToList(item: SkateBoardItem){
+        mutableList.apply {
+            clear()
+            add(item)
+            _itemsList.value!!.forEach {
+                add(it)
+            }
+            updateItemList()
+        }
+    }
+
+
     init {  // log
         timber(TAG, MESSAGE_INIT, Priority.VERBOSE)
     }
+
 
 
     // Lifecycle method

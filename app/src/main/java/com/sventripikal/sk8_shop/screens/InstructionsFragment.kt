@@ -39,6 +39,10 @@ class InstructionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        // log
+        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
+
         // inflate InstructionsFragment views
         binding = FragmentInstructionsBinding.inflate(inflater)
 
@@ -53,9 +57,6 @@ class InstructionsFragment : Fragment() {
 
         // set UI observers
         setUIObservers()
-
-        // log
-        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 
         // return root layout
         return binding.root

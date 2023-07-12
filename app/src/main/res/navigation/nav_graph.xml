@@ -57,7 +57,7 @@
     <fragment
         android:id="@+id/listingsFragment"
         android:name="com.sventripikal.sk8_shop.screens.ListingsFragment"
-        android:label="@string/listings"
+        android:label="@string/new_decks"
         tools:layout="@layout/fragment_listings" />
 
 </navigation>

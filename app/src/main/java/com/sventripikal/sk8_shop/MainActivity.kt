@@ -49,6 +49,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // log
+        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
+
         // inflate MainActivity views
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
 
@@ -57,9 +60,6 @@ class MainActivity : AppCompatActivity() {
 
         // setup navController destination listener
         setupActionBarDestinationListener()
-
-        // log
-        timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
 
         // set view to root layout
         setContentView(binding.root)
