@@ -1,7 +1,5 @@
 package com.sventripikal.sk8_shop
 
-import com.sventripikal.sk8_shop.models.Brand
-import com.sventripikal.sk8_shop.models.Category
 import com.sventripikal.sk8_shop.models.SkateBoardItem
 import timber.log.Timber
 
@@ -19,6 +17,7 @@ const val TRUCKS = "Trucks"
 
 const val TRUE = true
 const val FALSE = false
+const val FIVE = "5"
 
 enum class Priority { ERROR, VERBOSE, DEBUG, INFO }
 
@@ -37,62 +36,62 @@ val listOfBoards = mutableListOf(
      */
     SkateBoardItem(
         itemName = "Darkstar Skateboards Cameo Wilson New Abnormal Skateboard Deck",
-        Brand.DARKSTAR,
-        Category.DECKS,
-        quantity = 5
+        DARKSTAR,
+        DECKS,
+        quantity = FIVE
     ),
     SkateBoardItem(
         itemName = "Darkstar Skateboards Collapse Yellow Skateboard Deck Hybrid",
-        Brand.DARKSTAR,
-        Category.DECKS,
-        quantity = 5
+        DARKSTAR,
+        DECKS,
+        quantity = FIVE
     ),
     SkateBoardItem(
         itemName = "Darkstar Skateboards Greg Lutzka Anthology 2 Purple / Black Skateboard Deck",
-        Brand.DARKSTAR,
-        Category.DECKS,
-        quantity = 5
+        DARKSTAR,
+        DECKS,
+        quantity = FIVE
     ),
     /**
      * ELEMENT DECKS
      */
     SkateBoardItem(
         itemName = "Element Skateboards Nick Garcia Trip Out Skateboard Deck",
-        Brand.ELEMENT,
-        Category.DECKS,
-        quantity = 5
+        ELEMENT,
+        DECKS,
+        quantity = FIVE
     ),
     SkateBoardItem(
         itemName = "Element Skateboards Sascha Daley Future Nature Skateboard Deck",
-        Brand.ELEMENT,
-        Category.DECKS,
-        quantity = 5
+        ELEMENT,
+        DECKS,
+        quantity = FIVE
     ),
     SkateBoardItem(
         itemName = "Element Skateboards Landscape Australia Skateboard Deck",
-        Brand.ELEMENT,
-        Category.DECKS,
-        quantity = 5
+        ELEMENT,
+        DECKS,
+        quantity = FIVE
     ),
     /**
      * TOYMACHINE DECKS
      */
     SkateBoardItem(
         itemName = "Toy Machine Skateboards Monster Assorted Stains Skateboard Deck",
-        Brand.TOYMACHINE,
-        Category.DECKS,
-        quantity = 5
+        TOY_MACHINE,
+        DECKS,
+        quantity = FIVE
     ),
     SkateBoardItem(
         itemName = "Toy Machine Skateboards Pattern Logo Skateboard Deck",
-        Brand.TOYMACHINE,
-        Category.DECKS,
-        quantity = 5
+        TOY_MACHINE,
+        DECKS,
+        quantity = FIVE
     ),
     SkateBoardItem(
         itemName = "Toy Machine Skateboards Bored Sect Skateboard Deck",
-        Brand.TOYMACHINE,
-        Category.DECKS,
-        quantity = 5
+        TOY_MACHINE,
+        DECKS,
+        quantity = FIVE
     )
 )

@@ -3,15 +3,9 @@ package com.sventripikal.sk8_shop.screens
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sventripikal.sk8_shop.DARKSTAR
-import com.sventripikal.sk8_shop.DECKS
-import com.sventripikal.sk8_shop.ELEMENT
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
-import com.sventripikal.sk8_shop.WHEELS
 import com.sventripikal.sk8_shop.listOfBoards
-import com.sventripikal.sk8_shop.models.Brand
-import com.sventripikal.sk8_shop.models.Category
 import com.sventripikal.sk8_shop.models.SkateBoardItem
 import com.sventripikal.sk8_shop.timber
 
@@ -100,28 +94,10 @@ class ApplicationViewModel : ViewModel() {
         _itemsList.value = mutableList.toMutableList()
     }
 
-    // return item brand
-    fun getItemBrand(text: String): Brand {
-        return when (text) {
-            DARKSTAR -> Brand.DARKSTAR
-            ELEMENT -> Brand.ELEMENT
-            else -> Brand.TOYMACHINE
-        }
-    }
-
-    // return item category
-    fun getItemCategory(text: String): Category {
-        return when (text) {
-            DECKS -> Category.DECKS
-            WHEELS -> Category.WHEELS
-            else -> Category.TRUCKS
-        }
-    }
-
 
 
     init {  // log
-        timber(TAG, MESSAGE_INIT, Priority.VERBOSE)
+        timber(TAG, MESSAGE_INIT, Priority.DEBUG)
     }
 
 

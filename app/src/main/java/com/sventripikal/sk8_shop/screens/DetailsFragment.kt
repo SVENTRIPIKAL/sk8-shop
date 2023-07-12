@@ -7,22 +7,27 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.sventripikal.sk8_shop.DARKSTAR
+import com.sventripikal.sk8_shop.DECKS
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
 import com.sventripikal.sk8_shop.databinding.FragmentDetailsBinding
-import com.sventripikal.sk8_shop.models.Brand
-import com.sventripikal.sk8_shop.models.Category
 import com.sventripikal.sk8_shop.models.SkateBoardItem
 import com.sventripikal.sk8_shop.timber
-import java.util.Random
 
 
+private const val MESSAGE_INIT = "[DetailsFragment] INIT"
 private const val MESSAGE_CREATE = "[DetailsFragment] ON-CREATE"
 private const val MESSAGE_START = "[DetailsFragment] ON-START"
 private const val MESSAGE_RESUME = "[DetailsFragment] ON-RESUME"
 private const val MESSAGE_PAUSE = "[DetailsFragment] ON-PAUSE"
 private const val MESSAGE_STOP = "[DetailsFragment] ON-STOP"
 private const val MESSAGE_DESTROY = "[DetailsFragment] ON-DESTROY"
+
+private const val ZERO = 0
+private const val ONE_HUNDRED = 100
+private const val ONE_THOUSAND = 1000
+private const val NINE_THOUSAND = 9000
 
 class DetailsFragment : Fragment() {
 
@@ -31,6 +36,24 @@ class DetailsFragment : Fragment() {
 
     // view Binder
     private lateinit var binding: FragmentDetailsBinding
+
+    // default skateboard
+    private val defaultSkateBoard: SkateBoardItem
+
+
+    // create default values for data class on startup
+    init {
+
+        // log
+        timber(TAG, MESSAGE_INIT, Priority.DEBUG)
+
+        val name: String = kotlin.random.Random.nextInt(ONE_THOUSAND, NINE_THOUSAND).toString()
+        val brand: String = DARKSTAR
+        val category: String = DECKS
+        val quantity: String = kotlin.random.Random.nextInt(ZERO, ONE_HUNDRED).toString()
+
+        defaultSkateBoard = SkateBoardItem(name, brand, category, quantity)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,6 +83,10 @@ class DetailsFragment : Fragment() {
 
         // reference lifecycle owner
         binding.lifecycleOwner = this
+
+        // assign data class default item
+        // observers of EditText fields in .xml create copy when casted
+        binding.skateboardItem = defaultSkateBoard
     }
 
     // set ui listeners
@@ -88,39 +115,9 @@ class DetailsFragment : Fragment() {
     // create new item
     private fun createNewItem() {
 
-        // binding block
-        binding.apply {
-
-
-            // also handles empty entries
-            val name: String = if (itemNameInputLayout.editText?.text.isNullOrBlank()) {
-                kotlin.random.Random.nextInt(1000, 9000).toString()
-
-            } else itemNameInputLayout.editText!!.text.toString()
-
-
-            val brand: Brand = if (brandsDropDownMenu.editText?.text.isNullOrBlank()) {
-                Brand.DARKSTAR
-
-            } else viewModel!!.getItemBrand(brandsDropDownMenu.editText!!.text.toString())
-
-            val category: Category = if (categoriesDropDownMenu.editText?.text.isNullOrBlank()) {
-                Category.DECKS
-
-            } else viewModel!!.getItemCategory(categoriesDropDownMenu.editText!!.text.toString())
-
-            val quantity: Int = if (itemQuantityInputLayout.editText?.text.isNullOrBlank()) {
-                kotlin.random.Random.nextInt(0, 100)
-
-            } else itemQuantityInputLayout.editText!!.text.toString().toInt()
-
-            // add item to list
-            viewModel!!.addItemToList(
-                SkateBoardItem(name, brand, category, quantity)
-            )
-        }
+        // cast Data class object with EditTextValues & add to list
+        viewModel.addItemToList( binding.skateboardItem as SkateBoardItem )
     }
-
 
 
     /**

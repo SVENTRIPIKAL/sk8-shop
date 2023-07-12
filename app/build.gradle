@@ -2,7 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'    // safeArgs
-    id 'kotlin-parcelize' // parcelize
+    id 'kotlin-parcelize'                       // parcelize
+    id 'com.google.devtools.ksp'                // ksp for glide
 }
 
 android {

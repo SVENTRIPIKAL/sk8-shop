@@ -99,7 +99,7 @@ class ListingsFragment : Fragment() {
                 }
 
                 // log
-                timber(TAG, "${item.itemName} added to $itemsLinearLayout", Priority.DEBUG)
+                timber(TAG, "${item.itemName} added to ${itemsLinearLayout.javaClass}", Priority.DEBUG)
             }
         })
 

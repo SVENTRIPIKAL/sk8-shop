@@ -4,11 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="HardcodedText" >
 
-    <!-- viewmodel data class -->
     <data>
+        <!-- viewModel data class -->
         <variable
             name="viewModel"
             type="com.sventripikal.sk8_shop.screens.ApplicationViewModel" />
+
+        <!-- skateboard data class -->
+        <variable
+            name="skateboardItem"
+            type="com.sventripikal.sk8_shop.models.SkateBoardItem" />
     </data>
 
     <!-- constraint layout -->
@@ -45,9 +50,10 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="80dp">
 
-            <!-- name textfield -->
+            <!-- itemName editTextField / android:text 2-way binding [String] -->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/itemName_TextField"
+                android:id="@+id/itemName_editTextField"
+                android:text="@={skateboardItem.itemName}"
                 android:layout_width="@dimen/width_250dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -61,22 +67,36 @@
         <!-- brand layout -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/brands_dropDown_menu"
-            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:gravity="center"
+
             android:hint="Brand"
+            android:textColorHint="@color/black"
+
+            app:boxStrokeWidth="@dimen/width_2dp"
+            app:boxStrokeWidthFocused="@dimen/width_3dp"
+
+
+            app:endIconMode="clear_text"
+            app:helperTextTextAppearance="@style/HelperEditText_TextAppearance"
+
+            app:helperTextTextColor="@color/darkRed"
+            app:hintTextAppearance="@style/InputEditText_TextAppearance"
+            app:hintTextColor="@color/lightGreen"
             app:layout_constraintBottom_toTopOf="@+id/categories_dropDown_menu"
             app:layout_constraintTop_toBottomOf="@+id/itemName_inputLayout"
             tools:layout_editor_absoluteX="1dp">
 
-            <!-- brand textview -->
-            <AutoCompleteTextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:text="@={skateboardItem.brand}"
                 android:layout_width="@dimen/width_250dp"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                app:simpleItems="@array/brand_choices"
-                tools:ignore="LabelFor" />
+                android:inputType="text"
+                android:singleLine="true"
+                android:textAppearance="@style/InputEditText_TextAppearance" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,22 +104,36 @@
         <!-- category layout -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/categories_dropDown_menu"
-            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:gravity="center"
+
             android:hint="Category"
+            android:textColorHint="@color/black"
+
+            app:boxStrokeWidth="@dimen/width_2dp"
+            app:boxStrokeWidthFocused="@dimen/width_3dp"
+
+
+            app:endIconMode="clear_text"
+            app:helperTextTextAppearance="@style/HelperEditText_TextAppearance"
+
+            app:helperTextTextColor="@color/darkRed"
+            app:hintTextAppearance="@style/InputEditText_TextAppearance"
+            app:hintTextColor="@color/lightGreen"
             app:layout_constraintBottom_toTopOf="@+id/itemQuantity_inputLayout"
             app:layout_constraintTop_toBottomOf="@+id/brands_dropDown_menu"
             tools:layout_editor_absoluteX="3dp">
 
-            <!-- category textview -->
-            <AutoCompleteTextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:text="@={skateboardItem.category}"
                 android:layout_width="@dimen/width_250dp"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                app:simpleItems="@array/category_choices"
-                tools:ignore="LabelFor" />
+                android:inputType="text"
+                android:singleLine="true"
+                android:textAppearance="@style/InputEditText_TextAppearance" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,9 +165,10 @@
             app:layout_constraintTop_toBottomOf="@+id/categories_dropDown_menu"
             tools:layout_editor_absoluteX="80dp">
 
-            <!-- quantity textfield -->
+            <!-- quantity editTextField / android:text 2-way binding [Int] -->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/itemQuantity_TextField"
+                android:id="@+id/itemQuantity_editTextField"
+                android:text="@={skateboardItem.quantity}"
                 android:layout_width="@dimen/width_250dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
