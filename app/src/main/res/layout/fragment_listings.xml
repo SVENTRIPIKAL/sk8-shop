@@ -66,18 +66,3 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
-
-<!--
-8. Create a class that extends ViewModel    [X]             (VIEWMODEL)
-
-LIST
-
-   *  Use a LiveData field that returns the list of shoes
-
-9. Create a new Shoe List destination that includes:    [_] (LISTING PAGE)
-
-   * A new layout
-   * A ScrollView
-   * A LinearLayout for Shoe Items
-   * A FloatingActionButton with an action to navigate to the shoe detail screen
--->

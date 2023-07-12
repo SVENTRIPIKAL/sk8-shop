@@ -70,7 +70,7 @@ class ListingsFragment : Fragment() {
         bindItemsToLayout()
     }
 
-    // add Item Names to Layout as TextViews
+    // add Item Names to Layout as ButtonViews
     @SuppressLint("ResourceAsColor")
     private fun bindItemsToLayout() {
 

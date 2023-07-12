@@ -13,6 +13,7 @@
         android:id="@+id/categories_drawer"
         android:title="Categories" />
 
+    <!-- clickable logout -->
     <item
         android:id="@+id/logOut_drawer"
         android:title="Logout" />
