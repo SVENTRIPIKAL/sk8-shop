@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
 import com.sventripikal.sk8_shop.databinding.FragmentDetailsBinding
@@ -41,6 +42,9 @@ class DetailsFragment : Fragment() {
         // set bindings
         setBindings()
 
+        // set ui observers
+        setUIObservers()
+
         // return layout root
         return binding.root
     }
@@ -56,9 +60,14 @@ class DetailsFragment : Fragment() {
 
     // set ui listeners
     private fun setUIObservers() {
-        /**
-         * TO DO
-         */
+
+        // listener for Cancel button
+        binding.cancelButton.setOnClickListener {
+
+            // navigate back to Listings page
+            val action = DetailsFragmentDirections.actionDetailsFragmentToListingsFragment()
+            findNavController().navigate(action)
+        }
     }
 
 

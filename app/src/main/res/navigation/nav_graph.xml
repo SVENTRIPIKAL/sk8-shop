@@ -82,7 +82,7 @@
             app:popEnterAnim="@anim/slide_from_right_to_middle"
             app:popExitAnim="@anim/slide_from_middle_to_right"
             app:popUpTo="@id/listingsFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
 
 </navigation>

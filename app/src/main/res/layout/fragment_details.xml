@@ -41,16 +41,17 @@
             app:hintTextAppearance="@style/InputEditText_TextAppearance"
             app:hintTextColor="@color/lightGreen"
 
-            tools:layout_editor_absoluteX="80dp"
-            tools:layout_editor_absoluteY="76dp">
+            app:layout_constraintBottom_toTopOf="@+id/brands_dropDown_menu"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="80dp">
 
             <!-- name textfield -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/itemName_TextField"
                 android:layout_width="@dimen/width_250dp"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
                 android:inputType="text"
+                android:singleLine="true"
                 android:textAppearance="@style/InputEditText_TextAppearance"
                 tools:layout_editor_absoluteX="80dp"
                 tools:layout_editor_absoluteY="130dp" />
@@ -65,8 +66,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Brand"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="169dp">
+            app:layout_constraintBottom_toTopOf="@+id/categories_dropDown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/itemName_inputLayout"
+            tools:layout_editor_absoluteX="1dp">
 
             <!-- brand textview -->
             <AutoCompleteTextView
@@ -79,7 +81,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
         <!-- category layout -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/categories_dropDown_menu"
@@ -88,8 +89,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Category"
-            tools:layout_editor_absoluteX="3dp"
-            tools:layout_editor_absoluteY="288dp">
+            app:layout_constraintBottom_toTopOf="@+id/itemQuantity_inputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/brands_dropDown_menu"
+            tools:layout_editor_absoluteX="3dp">
 
             <!-- category textview -->
             <AutoCompleteTextView
@@ -100,7 +102,6 @@
                 tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
 
         <!-- quantity inputlayout -->
@@ -126,21 +127,21 @@
             app:hintTextAppearance="@style/InputEditText_TextAppearance"
             app:hintTextColor="@color/lightGreen"
 
-            tools:layout_editor_absoluteX="80dp"
-            tools:layout_editor_absoluteY="398dp">
+            app:layout_constraintBottom_toTopOf="@+id/cancel_button"
+            app:layout_constraintTop_toBottomOf="@+id/categories_dropDown_menu"
+            tools:layout_editor_absoluteX="80dp">
 
             <!-- quantity textfield -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/itemQuantity_TextField"
                 android:layout_width="@dimen/width_250dp"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
                 android:inputType="number"
+                android:singleLine="true"
                 android:textAppearance="@style/InputEditText_TextAppearance"
                 tools:layout_editor_absoluteX="80dp"
                 tools:layout_editor_absoluteY="130dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
 
         <!-- cancel button -->
@@ -149,14 +150,16 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="@dimen/width_100dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="79dp"
             android:text="Cancel"
             android:textColor="@color/darkRed"
+            app:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/save_button"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.None"
-            tools:layout_editor_absoluteY="692dp" />
-
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.None" />
 
 
         <!-- save button -->
@@ -165,14 +168,15 @@
             style="?attr/materialIconButtonFilledStyle"
             android:layout_width="@dimen/width_100dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="79dp"
             android:text="Save Item"
             android:textColor="@color/lightYellow"
             app:backgroundTint="@color/lightGreen"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/cancel_button"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.None"
-            tools:layout_editor_absoluteY="692dp" />
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.None" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
