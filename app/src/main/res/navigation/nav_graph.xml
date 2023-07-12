@@ -58,6 +58,31 @@
         android:id="@+id/listingsFragment"
         android:name="com.sventripikal.sk8_shop.screens.ListingsFragment"
         android:label="@string/new_decks"
-        tools:layout="@layout/fragment_listings" />
+        tools:layout="@layout/fragment_listings" >
+        <action
+            android:id="@+id/action_listingsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_from_right_to_middle"
+            app:exitAnim="@anim/slide_from_middle_to_right"
+            app:popEnterAnim="@anim/slide_from_right_to_middle"
+            app:popExitAnim="@anim/slide_from_middle_to_right" />
+    </fragment>
+
+    <!-- Details -->
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.sventripikal.sk8_shop.screens.DetailsFragment"
+        android:label="Input Details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_listingsFragment"
+            app:destination="@id/listingsFragment"
+            app:enterAnim="@anim/slide_from_right_to_middle"
+            app:exitAnim="@anim/slide_from_middle_to_right"
+            app:popEnterAnim="@anim/slide_from_right_to_middle"
+            app:popExitAnim="@anim/slide_from_middle_to_right"
+            app:popUpTo="@id/listingsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

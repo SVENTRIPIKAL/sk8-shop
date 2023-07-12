@@ -9,6 +9,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.sventripikal.sk8_shop.HELPER_TEXT
 import com.sventripikal.sk8_shop.Priority
@@ -127,7 +128,7 @@ class LoginFragment : Fragment() {
 
                 //navigate to next fragment
                 val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
-                binding.root.findNavController().navigate(action)
+                findNavController().navigate(action)
 
             } else {    // set helper text if not complete
                 setHelperText(username, password)

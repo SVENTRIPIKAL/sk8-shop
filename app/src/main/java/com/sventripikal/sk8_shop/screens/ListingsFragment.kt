@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.R
 import com.sventripikal.sk8_shop.TAG
@@ -33,7 +34,7 @@ class ListingsFragment : Fragment() {
     private lateinit var binding: FragmentListingsBinding
 
     // list of views LinearLayout
-    private lateinit var itemListView: LinearLayout
+    private lateinit var itemsLinearLayout: LinearLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,7 +65,7 @@ class ListingsFragment : Fragment() {
         binding.lifecycleOwner = this
 
         // linear layout view list
-        itemListView = binding.itemListView
+        itemsLinearLayout = binding.itemListView
 
         // bind viewModel list to Layout
         bindItemsToLayout()
@@ -95,24 +96,30 @@ class ListingsFragment : Fragment() {
                 // assign view style
                 setTextAppearance(R.style.itemListViewStyle)
 
-                // add view to layout
-                itemListView.addView(this)
+                // add view to linearLayout
+                itemsLinearLayout.addView(this)
             }
 
             // log
-            timber(TAG, "${it.itemName} added to $itemListView", Priority.DEBUG)
+            timber(TAG, "${it.itemName} added to $itemsLinearLayout", Priority.DEBUG)
         }
     }
 
+    // sets text to Button
     private fun setText(index: Int, item: SkateBoardItem): String {
         return "${index}.)  ${item.itemName}"
     }
 
     // set ui listeners
     private fun setUIObservers() {
-        /**
-         * TO DO
-         */
+
+        // set listener for FAB
+        binding.floatingActionButton.setOnClickListener {
+
+            // get navigation action & navigate to destination
+            val action = ListingsFragmentDirections.actionListingsFragmentToDetailsFragment()
+            findNavController().navigate(action)
+        }
     }
 
 
@@ -144,5 +151,4 @@ class ListingsFragment : Fragment() {
         super.onDestroy()
         timber(TAG, MESSAGE_DESTROY, Priority.ERROR)
     }
-
 }
