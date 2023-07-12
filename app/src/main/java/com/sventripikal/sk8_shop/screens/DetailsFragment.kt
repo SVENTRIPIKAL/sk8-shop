@@ -10,8 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
 import com.sventripikal.sk8_shop.databinding.FragmentDetailsBinding
+import com.sventripikal.sk8_shop.models.Brand
+import com.sventripikal.sk8_shop.models.Category
 import com.sventripikal.sk8_shop.models.SkateBoardItem
 import com.sventripikal.sk8_shop.timber
+import java.util.Random
 
 
 private const val MESSAGE_CREATE = "[DetailsFragment] ON-CREATE"
@@ -88,10 +91,28 @@ class DetailsFragment : Fragment() {
         // binding block
         binding.apply {
 
-            val name = itemNameInputLayout.editText!!.text.toString()
-            val brand = viewModel!!.getItemBrand(brandsDropDownMenu.editText!!.text.toString())
-            val category = viewModel!!.getItemCategory(categoriesDropDownMenu.editText!!.text.toString())
-            val quantity = itemQuantityInputLayout.editText!!.text.toString().toInt()
+
+            // also handles empty entries
+            val name: String = if (itemNameInputLayout.editText?.text.isNullOrBlank()) {
+                kotlin.random.Random.nextInt(1000, 9000).toString()
+
+            } else itemNameInputLayout.editText!!.text.toString()
+
+
+            val brand: Brand = if (brandsDropDownMenu.editText?.text.isNullOrBlank()) {
+                Brand.DARKSTAR
+
+            } else viewModel!!.getItemBrand(brandsDropDownMenu.editText!!.text.toString())
+
+            val category: Category = if (categoriesDropDownMenu.editText?.text.isNullOrBlank()) {
+                Category.DECKS
+
+            } else viewModel!!.getItemCategory(categoriesDropDownMenu.editText!!.text.toString())
+
+            val quantity: Int = if (itemQuantityInputLayout.editText?.text.isNullOrBlank()) {
+                kotlin.random.Random.nextInt(0, 100)
+
+            } else itemQuantityInputLayout.editText!!.text.toString().toInt()
 
             // add item to list
             viewModel!!.addItemToList(

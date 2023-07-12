@@ -16,6 +16,7 @@
     <!-- clickable logout -->
     <item
         android:id="@+id/logOut_drawer"
+        android:enabled="true"
         android:title="Logout" />
 
 </menu>

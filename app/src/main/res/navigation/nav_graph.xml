@@ -66,6 +66,14 @@
             app:exitAnim="@anim/slide_from_middle_to_right"
             app:popEnterAnim="@anim/slide_from_right_to_middle"
             app:popExitAnim="@anim/slide_from_middle_to_right" />
+        <action
+            android:id="@+id/action_listingsFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_from_left_to_middle"
+            app:exitAnim="@anim/slide_from_middle_to_left"
+            app:popEnterAnim="@anim/slide_from_left_to_middle"
+            app:popExitAnim="@anim/slide_from_middle_to_left"
+            app:popUpTo="@id/loginFragment" />
     </fragment>
 
     <!-- Details -->
