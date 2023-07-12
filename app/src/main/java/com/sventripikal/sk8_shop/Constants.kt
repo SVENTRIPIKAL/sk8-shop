@@ -8,6 +8,15 @@ import timber.log.Timber
 
 const val TAG = "_SVENTRIPIKAL"
 const val HELPER_TEXT = "*COMPLETE TEXT FIELD*"
+
+const val DARKSTAR = "DarkStar"
+const val ELEMENT = "Element"
+const val TOY_MACHINE = "Toy Machine"
+
+const val DECKS = "Decks"
+const val WHEELS = "Wheels"
+const val TRUCKS = "Trucks"
+
 const val TRUE = true
 const val FALSE = false
 

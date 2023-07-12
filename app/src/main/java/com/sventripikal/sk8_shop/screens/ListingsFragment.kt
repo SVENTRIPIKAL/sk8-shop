@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.R
@@ -68,42 +69,50 @@ class ListingsFragment : Fragment() {
         itemsLinearLayout = binding.itemListView
 
         // bind viewModel list to Layout
-        bindItemsToLayout()
+//        bindItemsToLayout()
     }
 
-    // add Item Names to Layout as ButtonViews
-    @SuppressLint("ResourceAsColor")
-    private fun bindItemsToLayout() {
-
-        // temp value
-        var index = 0
-
-        // viewmodel item list
-        viewModel.itemsList.value!!.forEach {
-
-            //update index
-            index++
-
-            // create ButtonView
-            val button = Button(requireContext())
-
-            // buttonView block
-            button.apply {
-
-                // assign text to view
-                text = setText(index, it)
-
-                // assign view style
-                setTextAppearance(R.style.itemListViewStyle)
-
-                // add view to linearLayout
-                itemsLinearLayout.addView(this)
-            }
-
-            // log
-            timber(TAG, "${it.itemName} added to $itemsLinearLayout", Priority.DEBUG)
-        }
-    }
+//    // add Item Names to Layout as ButtonViews
+//    @SuppressLint("ResourceAsColor")
+//    private fun bindItemsToLayout() {
+//
+//        // temp value
+//        var index = 0
+//
+//        // viewmodel item list
+//        viewModel.itemsList.observe(viewLifecycleOwner, Observer {
+//
+//
+//
+//
+//
+//        })
+//
+//            .value!!.forEach {
+//
+//            //update index
+//            index++
+//
+//            // create ButtonView
+//            val button = Button(requireContext())
+//
+//            // buttonView block
+//            button.apply {
+//
+//                // assign text to view
+//                text = setText(index, it)
+//
+//                // assign view style
+//                setTextAppearance(R.style.itemListViewStyle)
+//
+//                // add view to linearLayout
+//                itemsLinearLayout.addView(this)
+//            }
+//
+//            // log
+//            timber(TAG, "${it.itemName} added to $itemsLinearLayout", Priority.DEBUG)
+//        }
+//    }
 
     // sets text to Button
     private fun setText(index: Int, item: SkateBoardItem): String {
@@ -112,6 +121,37 @@ class ListingsFragment : Fragment() {
 
     // set ui listeners
     private fun setUIObservers() {
+
+        // viewmodel item list
+        viewModel.itemsList.observe(viewLifecycleOwner, Observer {
+            // temp value
+            var index = 0
+
+            it.forEach { item ->
+
+                //update index
+                index++
+
+                // create ButtonView
+                val button = Button(requireContext())
+
+                // buttonView block
+                button.apply {
+
+                    // assign text to view
+                    text = setText(index, item)
+
+                    // assign view style
+                    setTextAppearance(R.style.itemListViewStyle)
+
+                    // add view to linearLayout
+                    itemsLinearLayout.addView(this)
+                }
+
+                // log
+                timber(TAG, "${item.itemName} added to $itemsLinearLayout", Priority.DEBUG)
+            }
+        })
 
         // set listener for FAB
         binding.floatingActionButton.setOnClickListener {

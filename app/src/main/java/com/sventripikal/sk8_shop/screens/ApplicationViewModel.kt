@@ -3,10 +3,16 @@ package com.sventripikal.sk8_shop.screens
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sventripikal.sk8_shop.DARKSTAR
+import com.sventripikal.sk8_shop.DECKS
+import com.sventripikal.sk8_shop.ELEMENT
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
-import com.sventripikal.sk8_shop.models.SkateBoardItem
+import com.sventripikal.sk8_shop.WHEELS
 import com.sventripikal.sk8_shop.listOfBoards
+import com.sventripikal.sk8_shop.models.Brand
+import com.sventripikal.sk8_shop.models.Category
+import com.sventripikal.sk8_shop.models.SkateBoardItem
 import com.sventripikal.sk8_shop.timber
 
 
@@ -62,25 +68,56 @@ class ApplicationViewModel : ViewModel() {
         get() = _itemsList
 
 
-    // reassign new _itemList.value list
-    private fun updateItemList() {
-        _itemsList.value = mutableList
-    }
-
+    /**
+     * DETAILS FRAGMENT
+     */
     // empty mutable list to add updates to ItemList
     private val mutableList = mutableListOf<SkateBoardItem>()
 
-    // clear mutableList / add new item / append all _ItemList values / reassign new _itemList.value
+    // add new item
     fun addItemToList(item: SkateBoardItem){
+
+        // log
+        timber(TAG, "$item", Priority.INFO)
+
+        // mutable list block
         mutableList.apply {
+            // clear mutable list
             clear()
+            // add new item
             add(item)
-            _itemsList.value!!.forEach {
-                add(it)
-            }
+            // add all from LiveData list
+            addAll(_itemsList.value!!)
+            //update live data list
             updateItemList()
+            // log
+            timber(TAG, "List Updated", Priority.DEBUG)
         }
     }
+
+    // update livedata list with new mutable list
+    private fun updateItemList() {
+        _itemsList.value = mutableList.toMutableList()
+    }
+
+    // return item brand
+    fun getItemBrand(text: String): Brand {
+        return when (text) {
+            DARKSTAR -> Brand.DARKSTAR
+            ELEMENT -> Brand.ELEMENT
+            else -> Brand.TOYMACHINE
+        }
+    }
+
+    // return item category
+    fun getItemCategory(text: String): Category {
+        return when (text) {
+            DECKS -> Category.DECKS
+            WHEELS -> Category.WHEELS
+            else -> Category.TRUCKS
+        }
+    }
+
 
 
     init {  // log

@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.sventripikal.sk8_shop.Priority
 import com.sventripikal.sk8_shop.TAG
 import com.sventripikal.sk8_shop.databinding.FragmentDetailsBinding
+import com.sventripikal.sk8_shop.models.SkateBoardItem
 import com.sventripikal.sk8_shop.timber
 
 
@@ -67,6 +68,35 @@ class DetailsFragment : Fragment() {
             // navigate back to Listings page
             val action = DetailsFragmentDirections.actionDetailsFragmentToListingsFragment()
             findNavController().navigate(action)
+        }
+
+        // listener for SaveItem button
+        binding.saveButton.setOnClickListener {
+
+            // create new item & add to list
+            createNewItem()
+
+            // navigate back to listings page
+            val action = DetailsFragmentDirections.actionDetailsFragmentToListingsFragment()
+            findNavController().navigate(action)
+        }
+    }
+
+    // create new item
+    private fun createNewItem() {
+
+        // binding block
+        binding.apply {
+
+            val name = itemNameInputLayout.editText!!.text.toString()
+            val brand = viewModel!!.getItemBrand(brandsDropDownMenu.editText!!.text.toString())
+            val category = viewModel!!.getItemCategory(categoriesDropDownMenu.editText!!.text.toString())
+            val quantity = itemQuantityInputLayout.editText!!.text.toString().toInt()
+
+            // add item to list
+            viewModel!!.addItemToList(
+                SkateBoardItem(name, brand, category, quantity)
+            )
         }
     }
 
