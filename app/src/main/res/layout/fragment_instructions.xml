@@ -119,16 +119,15 @@
             <!-- material design extended floating action button -->
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/letsGoFloatingActionButton"
+                style="@style/FragmentTextView_TextAppearance_SMALL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_16dp"
                 android:layout_marginEnd="@dimen/margin_20dp"
                 android:backgroundTint="@color/lightPurple"
                 android:contentDescription="@string/extended_floating_action_button"
-                android:fontFamily="@font/charmelade_font"
                 android:text="@string/let_s_go"
                 android:textColor="@color/lightYellow"
-                android:textStyle="italic"
                 app:icon="@drawable/round_forward_24"
                 app:iconTint="@color/lightYellow"
                 app:layout_constraintBottom_toBottomOf="parent"

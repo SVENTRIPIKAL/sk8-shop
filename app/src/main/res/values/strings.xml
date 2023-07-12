@@ -22,4 +22,14 @@
     <string name="drawer_closed">Closed</string>
     <string name="instructions_supporting_text">Since we are a fairly new business, we only have a select list of accessories to choose from and need your help!\nWe encourage you to provide us with feedback by clicking the [+] button in our Listings page to navigate to our Details page.\nOnce there, you can fill out any number of item details to submit to our listings page in order to promote the next fire product.\nGive it a try!</string>
     <string name="floating_action_button">Floating Action Button</string>
+    <string-array name="brand_choices">
+        <item>DarkStar</item>
+        <item>Element</item>
+        <item>Toy Machine</item>
+    </string-array>
+    <string-array name="category_choices">
+        <item>Decks</item>
+        <item>Wheels</item>
+        <item>Trucks</item>
+    </string-array>
 </resources>

@@ -17,13 +17,190 @@
         android:layout_height="match_parent"
         tools:context=".screens.DetailsFragment">
 
-        <!-- temp view -->
-        <TextView
+        <!-- cancel button -->
+        <Button
+            android:id="@+id/cancel_button"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="@dimen/width_100dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="@color/darkRed"
+            app:layout_constraintEnd_toStartOf="@+id/save_button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.None"
+            tools:layout_editor_absoluteY="692dp" />
+
+        <!-- save button -->
+        <Button
+            android:id="@+id/save_button"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="@dimen/width_100dp"
+            android:layout_height="wrap_content"
+            android:text="Save Item"
+            android:textColor="@color/lightYellow"
+            app:backgroundTint="@color/lightGreen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cancel_button"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.None"
+            tools:layout_editor_absoluteY="692dp" />
+
+
+        <!-- item name input layout -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/itemName_inputLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+
             android:gravity="center"
-            android:text="DETAILS PAGE" />
+
+            android:hint="Item Name"
+            android:textColorHint="@color/black"
+
+            app:boxStrokeWidth="@dimen/width_2dp"
+            app:boxStrokeWidthFocused="@dimen/width_3dp"
+
+
+            app:endIconMode="clear_text"
+            app:helperTextTextAppearance="@style/HelperEditText_TextAppearance"
+
+            app:helperTextTextColor="@color/darkRed"
+            app:hintTextAppearance="@style/InputEditText_TextAppearance"
+            app:hintTextColor="@color/lightGreen"
+
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="76dp">
+
+            <!-- item name textfield -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/itemName_TextField"
+                android:layout_width="@dimen/width_250dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="text"
+                android:textAppearance="@style/InputEditText_TextAppearance"
+                tools:layout_editor_absoluteX="80dp"
+                tools:layout_editor_absoluteY="130dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- brand layout -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/brands_dropDown_menu"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Brand"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="169dp">
+
+            <AutoCompleteTextView
+                android:layout_width="@dimen/width_250dp"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                app:simpleItems="@array/brand_choices"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- category layout -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/categories_dropDown_menu"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Category"
+            tools:layout_editor_absoluteX="3dp"
+            tools:layout_editor_absoluteY="288dp">
+
+            <AutoCompleteTextView
+                android:layout_width="@dimen/width_250dp"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                app:simpleItems="@array/category_choices"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+        <!-- item quantity inputlayout -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/itemQuantity_inputLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+
+            android:hint="Quantity"
+            android:textColorHint="@color/black"
+
+            app:boxStrokeWidth="@dimen/width_2dp"
+            app:boxStrokeWidthFocused="@dimen/width_3dp"
+
+
+            app:endIconMode="clear_text"
+            app:helperTextTextAppearance="@style/HelperEditText_TextAppearance"
+
+            app:helperTextTextColor="@color/darkRed"
+            app:hintTextAppearance="@style/InputEditText_TextAppearance"
+            app:hintTextColor="@color/lightGreen"
+
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="398dp">
+
+            <!-- item quantity textfield -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/itemQuantity_TextField"
+                android:layout_width="@dimen/width_250dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="number"
+                android:textAppearance="@style/InputEditText_TextAppearance"
+                tools:layout_editor_absoluteX="80dp"
+                tools:layout_editor_absoluteY="130dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+<!--
+11. Create a new Shoe Detail destination that includes: [X]
+
+    * A new layout [X]
+
+
+    var itemName: String,   // string
+    var brand: Brand,       // enum
+    var category: Category, // enum
+    var quantity: Int,      // number
+
+    * A TextView label and EditView for the
+      * Item Name   [editable]      [Text Input]
+      * Brand       [selectable]    [DropDown Menu]
+      * Category    [selectable]    [DropDown Menu]
+      * Quantity    [editable]      [Text Input]
+
+    * A Cancel button with an action to navigate back to the shoe list screen [X]
+
+    * A Save button with an action to navigate back to the shoe list screen [X]
+        and add a new Shoe to the Shoe View Model.
+
+
+13. In the Shoe List screen:    [_]
+
+    * Use an Activity level ViewModel to hold a list of Shoes (use by activityViewModels)
+    * Observe the shoes variable from the ViewModel
+    * Use DataBindingUtil to inflate the shoe_list layout
+    * Add a new layout item into the scrollview for each shoe.
+-->

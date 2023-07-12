@@ -27,72 +27,63 @@ val listOfBoards = mutableListOf(
      * DARKSTAR DECKS
      */
     SkateBoardItem(
-        Category.DECKS,
-        Brand.DARKSTAR,
-        R.drawable.ds2,
         itemName = "Darkstar Skateboards Cameo Wilson New Abnormal Skateboard Deck",
+        Brand.DARKSTAR,
+        Category.DECKS,
         quantity = 5
     ),
     SkateBoardItem(
-        Category.DECKS,
-        Brand.DARKSTAR,
-        R.drawable.ds3,
         itemName = "Darkstar Skateboards Collapse Yellow Skateboard Deck Hybrid",
+        Brand.DARKSTAR,
+        Category.DECKS,
         quantity = 5
     ),
     SkateBoardItem(
-        Category.DECKS,
-        Brand.DARKSTAR,
-        R.drawable.ds1,
         itemName = "Darkstar Skateboards Greg Lutzka Anthology 2 Purple / Black Skateboard Deck",
+        Brand.DARKSTAR,
+        Category.DECKS,
         quantity = 5
     ),
     /**
      * ELEMENT DECKS
      */
     SkateBoardItem(
-        Category.DECKS,
-        Brand.ELEMENT,
-        R.drawable.e2,
         itemName = "Element Skateboards Nick Garcia Trip Out Skateboard Deck",
+        Brand.ELEMENT,
+        Category.DECKS,
         quantity = 5
     ),
     SkateBoardItem(
-        Category.DECKS,
-        Brand.ELEMENT,
-        R.drawable.e3,
         itemName = "Element Skateboards Sascha Daley Future Nature Skateboard Deck",
+        Brand.ELEMENT,
+        Category.DECKS,
         quantity = 5
     ),
     SkateBoardItem(
-        Category.DECKS,
-        Brand.ELEMENT,
-        R.drawable.e1,
         itemName = "Element Skateboards Landscape Australia Skateboard Deck",
+        Brand.ELEMENT,
+        Category.DECKS,
         quantity = 5
     ),
     /**
      * TOYMACHINE DECKS
      */
     SkateBoardItem(
-        Category.DECKS,
-        Brand.TOYMACHINE,
-        R.drawable.tm1,
         itemName = "Toy Machine Skateboards Monster Assorted Stains Skateboard Deck",
+        Brand.TOYMACHINE,
+        Category.DECKS,
         quantity = 5
     ),
     SkateBoardItem(
-        Category.DECKS,
-        Brand.TOYMACHINE,
-        R.drawable.tm2,
         itemName = "Toy Machine Skateboards Pattern Logo Skateboard Deck",
+        Brand.TOYMACHINE,
+        Category.DECKS,
         quantity = 5
     ),
     SkateBoardItem(
-        Category.DECKS,
-        Brand.TOYMACHINE,
-        R.drawable.tm3,
         itemName = "Toy Machine Skateboards Bored Sect Skateboard Deck",
+        Brand.TOYMACHINE,
+        Category.DECKS,
         quantity = 5
     )
 )
