@@ -1,6 +1,5 @@
 package com.sventripikal.sk8_shop.screens
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -67,66 +66,17 @@ class ListingsFragment : Fragment() {
 
         // linear layout view list
         itemsLinearLayout = binding.itemListView
-
-        // bind viewModel list to Layout
-//        bindItemsToLayout()
-    }
-
-//    // add Item Names to Layout as ButtonViews
-//    @SuppressLint("ResourceAsColor")
-//    private fun bindItemsToLayout() {
-//
-//        // temp value
-//        var index = 0
-//
-//        // viewmodel item list
-//        viewModel.itemsList.observe(viewLifecycleOwner, Observer {
-//
-//
-//
-//
-//
-//        })
-//
-//            .value!!.forEach {
-//
-//            //update index
-//            index++
-//
-//            // create ButtonView
-//            val button = Button(requireContext())
-//
-//            // buttonView block
-//            button.apply {
-//
-//                // assign text to view
-//                text = setText(index, it)
-//
-//                // assign view style
-//                setTextAppearance(R.style.itemListViewStyle)
-//
-//                // add view to linearLayout
-//                itemsLinearLayout.addView(this)
-//            }
-//
-//            // log
-//            timber(TAG, "${it.itemName} added to $itemsLinearLayout", Priority.DEBUG)
-//        }
-//    }
-
-    // sets text to Button
-    private fun setText(index: Int, item: SkateBoardItem): String {
-        return "${index}.)  ${item.itemName}"
     }
 
     // set ui listeners
     private fun setUIObservers() {
 
-        // viewmodel item list
+        // viewmodel item list observer
         viewModel.itemsList.observe(viewLifecycleOwner, Observer {
             // temp value
             var index = 0
 
+            // for each item in list
             it.forEach { item ->
 
                 //update index
@@ -160,6 +110,11 @@ class ListingsFragment : Fragment() {
             val action = ListingsFragmentDirections.actionListingsFragmentToDetailsFragment()
             findNavController().navigate(action)
         }
+    }
+
+    // sets text to Button
+    private fun setText(index: Int, item: SkateBoardItem): String {
+        return "${index}.)  ${item.itemName}"
     }
 
 
