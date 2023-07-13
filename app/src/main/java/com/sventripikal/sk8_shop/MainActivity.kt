@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import com.google.android.material.navigation.NavigationView
 import com.sventripikal.sk8_shop.databinding.ActivityMainBinding
+import com.sventripikal.sk8_shop.screens.ListingsFragmentDirections
 
 
 private const val MESSAGE_CREATE = "[MainActivity] ON-CREATE"
@@ -116,8 +117,8 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.setDisplayHomeAsUpEnabled(FALSE)
                 }
                 R.id.listingsFragment -> {
-                    // set drawer toggle listener
-                    setDrawerToggleListener()
+                    // set drawer listeners
+                    setDrawerListeners()
                     // unlock & enable drawer
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
                     // unhide [hamburger] icon
@@ -127,18 +128,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // drawer onclick listener
-    private fun setDrawerToggleListener() {
+    // drawer listeners
+    private fun setDrawerListeners() {
+        // drawer open/close toggle listener
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
-    }
 
+        // drawer menu items onclick listener
+        drawerItems.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.logOut_drawer -> {     // return to login screen
+                    val action = ListingsFragmentDirections.actionListingsFragmentToLoginFragment()
+                    navController.navigate(action)
+                }
+            }
+            true // return true to indicate successful click
+        }
+    }
 
     // handle up navigation
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(binding.navHostFragment.id)
         return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
     }
 
 

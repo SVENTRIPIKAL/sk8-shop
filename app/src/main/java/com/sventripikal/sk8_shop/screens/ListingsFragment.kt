@@ -2,6 +2,9 @@ package com.sventripikal.sk8_shop.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -36,6 +39,12 @@ class ListingsFragment : Fragment() {
     // list of views LinearLayout
     private lateinit var itemsLinearLayout: LinearLayout
 
+
+    // inflate options menu
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.nav_drawer_menu, menu)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +52,9 @@ class ListingsFragment : Fragment() {
 
         // log
         timber(TAG, MESSAGE_CREATE, Priority.VERBOSE)
+
+        // assign overflow icon to view
+        setHasOptionsMenu(true)
 
         // inflate layout & views
         binding = FragmentListingsBinding.inflate(inflater)
@@ -115,6 +127,19 @@ class ListingsFragment : Fragment() {
     // sets text to Button
     private fun setText(index: Int, item: SkateBoardItem): String {
         return "${index}.)  ${item.itemName}"
+    }
+
+    // handle option selections
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.logOut_drawer -> {     // return to login screen
+                val action = ListingsFragmentDirections.actionListingsFragmentToLoginFragment()
+                findNavController().navigate(action)
+                true    // true to indicate successful click
+            }
+            else -> super.onOptionsItemSelected(item)   // return default
+        }
     }
 
 
