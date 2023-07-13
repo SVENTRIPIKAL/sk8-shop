@@ -3,16 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:ignore="HardcodedText" >
 
-    <!-- clickable dropDown [element][toymachine][darkstar] -->
-    <item
-        android:id="@+id/brands_drawer"
-        android:title="Brands" />
-
-    <!-- clickable dropDown [decks] -->
-    <item
-        android:id="@+id/categories_drawer"
-        android:title="Categories" />
-
     <!-- clickable logout -->
     <item
         android:id="@+id/logOut_drawer"

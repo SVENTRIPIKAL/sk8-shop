@@ -2,6 +2,8 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- viewmodel data class -->
     <data>
         <variable
             name="viewModel"
@@ -9,6 +11,7 @@
     </data>
 
 
+    <!-- constraint layout for complex organization of views-->
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/LoginFragment_Style"
         android:layout_width="match_parent"
@@ -16,6 +19,7 @@
         tools:context=".MainActivity">
 
 
+        <!-- page header text -->
         <TextView
             android:id="@+id/textView"
             style="@style/FragmentTextView_TextAppearance_LARGE"
@@ -32,6 +36,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.41000003" />
 
+        <!-- material design input layout [password] -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedLayout_Password"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -61,6 +66,7 @@
             app:startIconDrawable="@drawable/filled_lock_24"
             app:startIconTint="@color/lightGreen">
 
+            <!-- material design editText field [password] -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textField_Password"
                 android:layout_width="@dimen/width_250dp"
@@ -70,6 +76,7 @@
                 android:textAppearance="@style/InputEditText_TextAppearance" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- user login button -->
         <Button
             android:id="@+id/existingAccountButton"
             style="@style/LoginButton_Style"
@@ -84,6 +91,7 @@
             app:layout_constraintStart_toEndOf="@+id/newAccountButton"
             app:layout_constraintTop_toBottomOf="@+id/outlinedLayout_Password" />
 
+        <!-- user register button -->
         <Button
             android:id="@+id/newAccountButton"
             style="@style/RegisterButton_Style"
@@ -99,6 +107,7 @@
             app:layout_constraintTop_toTopOf="@+id/existingAccountButton"
             app:layout_constraintVertical_bias="0.0" />
 
+        <!-- material design input layout [userName] -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedLayout_UserName"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -131,6 +140,7 @@
             app:startIconDrawable="@drawable/round_person_24"
             app:startIconTint="@color/lightGreen">
 
+            <!-- material design editText field [userName] -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textField_UserName"
                 android:layout_width="@dimen/width_250dp"
@@ -139,6 +149,6 @@
                 android:textAppearance="@style/InputEditText_TextAppearance" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

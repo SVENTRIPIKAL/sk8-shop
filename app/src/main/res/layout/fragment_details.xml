@@ -90,6 +90,7 @@
             app:layout_constraintTop_toBottomOf="@+id/itemName_inputLayout"
             tools:layout_editor_absoluteX="1dp">
 
+            <!-- brand editTextField -->
             <com.google.android.material.textfield.TextInputEditText
                 android:text="@={skateboardItem.brand}"
                 android:layout_width="@dimen/width_250dp"
@@ -127,6 +128,7 @@
             app:layout_constraintTop_toBottomOf="@+id/brands_dropDown_menu"
             tools:layout_editor_absoluteX="3dp">
 
+            <!-- category editTextField -->
             <com.google.android.material.textfield.TextInputEditText
                 android:text="@={skateboardItem.category}"
                 android:layout_width="@dimen/width_250dp"
