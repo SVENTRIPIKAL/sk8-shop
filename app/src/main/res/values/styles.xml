@@ -13,7 +13,7 @@
         <item name="fontFamily">@font/skaterdude_font</item>
         <item name="android:capitalize">characters</item>
         <item name="android:typeface">serif</item>
-        <item name="android:textSize">@dimen/textSize_25sp</item>
+        <item name="android:textSize">@dimen/textSize_18sp</item>
         <item name="android:textColor">@color/lightGreen</item>
     </style>
 
@@ -28,7 +28,7 @@
         <item name="android:textSize">@dimen/textSize_18sp</item>
     </style>
 
-    <style name="InputEditText_TextAppearance" parent="FragmentTextView_TextAppearance_LARGE">
+    <style name="InputEditText_TextAppearance" parent="FragmentTextView_TextAppearance_SMALL">
     </style>
     <style name="HelperEditText_TextAppearance" parent="FragmentTextView_TextAppearance_SMALL">
     </style>
