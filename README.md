@@ -1,2 +1,36 @@
-# sk8-shop
-Udacity "Android Kotlin Developer" Shoe Store project demonstrating Layout building and in-app Navigation through Fragments and Views––as well as configuration-safe State preservation with the help of ViewModels.
+# Sk8-Shop
+## _layouts and fragment navigation_
+
+
+
+an android application demonstrating the use of: 
+
+- Fragments and Constraint Layouts
+- Type-Safe Fragment Navigation
+- ViewModel data sharing & preservation
+- Livedata & MutableLiveData updates
+- View data binding
+
+
+
+## Features
+
+- Login screen
+- Welcome screen
+- New Inventory screen
+- Details screen
+- List of inventory items which can be updated
+- Add button to navigate to Details screen
+- Edit text views for entering inventory info
+- Save item / cancel buttons for updating & navigating back
+- Logout option via UI Drawer or Overflow Menu
+
+
+
+## Dependencies
+
+- [Glide](https://bumptech.github.io/glide/) - fast and efficient image loading library for Android
+- [Timber](https://github.com/JakeWharton/timber) – an extensible API on top of Android's normal Log class
+- [Androidx Material Design] - material design for android
+- [Androidx ViewModel] - business logic or screen level state holder
+- [Androidx Navigation] - framework for navigating across application destinations
