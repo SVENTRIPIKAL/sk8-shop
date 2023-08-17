@@ -1,5 +1,5 @@
 # Sk8-Shop
-## _layouts and fragment navigation_
+## _views, layouts, and fragment navigation_
 
 ![Screenshot_20230817_083952_sk8-shop](https://github.com/SVENTRIPIKAL/sk8-shop/assets/90730468/5593a165-166d-472f-86fd-71ac0a5337cd)
 
