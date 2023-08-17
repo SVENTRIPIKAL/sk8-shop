@@ -8,7 +8,7 @@ an android application demonstrating the use of:
 - Fragments and Constraint Layouts
 - Type-Safe Fragment Navigation
 - ViewModel data sharing & preservation
-- Livedata & MutableLiveData updates
+- LiveData & MutableLiveData updates
 - View data binding
 
 
@@ -24,7 +24,7 @@ an android application demonstrating the use of:
 - Add button to navigate to Details screen
 - Edit text views for entering inventory info
 - Save item / cancel buttons for updating & navigating back
-- Logout option via UI Drawer or Overflow Menu
+- Logout options via UI Drawer or Overflow Menu
 
 
 
