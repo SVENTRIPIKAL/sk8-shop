@@ -19,6 +19,7 @@ an android application demonstrating the use of:
 - Welcome screen
 - New Inventory screen
 - Details screen
+- Image view Gifs loaded with Glide
 - List of inventory items which can be updated
 - Add button to navigate to Details screen
 - Edit text views for entering inventory info
